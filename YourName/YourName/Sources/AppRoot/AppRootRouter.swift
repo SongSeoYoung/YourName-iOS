@@ -13,7 +13,7 @@ protocol AppRootInteractable: Interactable, SplashListener, LoggedOutListener, M
 }
 
 protocol AppRootViewControllable: ViewControllable {
-    func setupViewControllers(_ viewControllers: ViewControllable...)
+    func setupViewControllers(_ viewControllers: (vc: ViewControllable, type: HomeTab)...)
 }
 
 final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControllable>, AppRootRouting {    
@@ -73,9 +73,9 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
            let settingRouter = self.setupSettingRouter() else { return }
         
         self.viewController.setupViewControllers(
-            myCardListRouter.viewControllable,
-            cardBooksRouter.viewControllable,
-            settingRouter.viewControllable
+            (vc: myCardListRouter.viewControllable, type: .myCardList),
+            (vc: cardBooksRouter.viewControllable, type: .cardBooks),
+            (vc: settingRouter.viewControllable, type: .setting)
         )
     }
     

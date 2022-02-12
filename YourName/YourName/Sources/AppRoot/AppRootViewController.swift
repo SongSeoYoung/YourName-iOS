@@ -20,7 +20,15 @@ final class AppRootViewController: UITabBarController, AppRootPresentable, AppRo
         self.view.backgroundColor = .white
     }
     
-    func setupViewControllers(_ viewControllers: ViewControllable...) {
-        super.setViewControllers(viewControllers.map(\.uiviewController), animated: true)
+    func setupViewControllers(_ viewControllers: (vc: ViewControllable, type: HomeTab)...) {
+        super.setViewControllers(viewControllers.map(\.vc.uiviewController), animated: true)
+        viewControllers.forEach { vc, type in
+            vc.uiviewController.tabBarItem = UITabBarItem(
+                title: type.description,
+                image: type.icon,
+                selectedImage: type.activeIcon
+            )
+        }
+        self.tabBar.backgroundColor = .white
     }
 }

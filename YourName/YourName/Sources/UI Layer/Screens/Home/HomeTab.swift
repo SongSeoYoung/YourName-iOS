@@ -10,14 +10,14 @@ import UIKit
 
 enum HomeTab: Int, CaseIterable {
     case myCardList
-    case cardBook
+    case cardBooks
     case setting
 }
 extension HomeTab: CustomStringConvertible {
     var description: String {
         switch self {
         case .myCardList: return "내 명함"
-        case .cardBook: return "도감"
+        case .cardBooks: return "도감"
         case .setting: return "기타 설정"
         }
     }
@@ -26,7 +26,7 @@ extension HomeTab {
     var activeIcon: UIImage? {
         switch self {
         case .myCardList: return UIImage(named: "icon_mycard_active")
-        case .cardBook: return UIImage(named: "icon_cardbook_active")
+        case .cardBooks: return UIImage(named: "icon_cardbook_active")
         case .setting: return UIImage(named: "icon_hamburger_active")
         }
     }
@@ -34,7 +34,7 @@ extension HomeTab {
     var icon: UIImage? {
         switch self {
         case .myCardList: return UIImage(named: "icon_mycard")
-        case .cardBook: return UIImage(named: "icon_cardbook")
+        case .cardBooks: return UIImage(named: "icon_cardbook")
         case .setting: return UIImage(named: "icon_hamburger")
         }
     }
