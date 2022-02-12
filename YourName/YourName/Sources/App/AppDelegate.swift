@@ -15,7 +15,7 @@ import RIBs
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var launchRouter: LaunchRouting?
+    private var launchRouter: LaunchRouting?
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
@@ -25,6 +25,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         launchRouter?.launch(from: window)
+        
+        // setup
         kakaoSDKInit()
         FirebaseApp.configure()
         FLEXManager.shared.showExplorer()

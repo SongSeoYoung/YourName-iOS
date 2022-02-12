@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SplashViewController: ViewController, Storyboarded {
+final class SplashViewController1: ViewController, Storyboarded {
     
     var viewModel: SplashViewModel!
     

@@ -17,8 +17,8 @@ final class SplashDependencyContainer {
         self.authenticationRepository = rootDependencyContainer.authenticationRepository
     }
     
-    func createSplashViewController() -> SplashViewController {
-        let viewController = SplashViewController.instantiate()
+    func createSplashViewController() -> SplashViewController1 {
+        let viewController = SplashViewController1.instantiate()
         viewController.viewModel = createSplashViewModel()
         return viewController
     }

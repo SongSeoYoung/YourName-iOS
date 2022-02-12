@@ -7,7 +7,7 @@
 
 import RIBs
 
-final class AppRootComponent: Component<EmptyDependency>, MyCardListDependency {
+final class AppRootComponent: Component<EmptyDependency>, SplashDependency {
     // app root는 상위 DI받을 것이 없어 EmptyDependency로 정의한다.
     init() {
         super.init(dependency: EmptyComponent())
@@ -30,13 +30,12 @@ final class AppRootBuilder: Builder<EmptyDependency>, AppRootBuildable {
         let component = AppRootComponent()
         let viewController = AppRootViewController()
         let interactor = AppRootInteractor(presenter: viewController)
-        
-        
-        let myCardListBuilder = MyCardListBuilder(dependency: component)
+        let spalshBuilder = SplashBuilder(dependency: component)
         
         return AppRootRouter(
             interactor: interactor,
             viewController: viewController,
-            myCardListBuilder: myCardListBuilder)
+            splashBuilder: spalshBuilder
+        )
     }
 }
