@@ -22,7 +22,7 @@ final class RootDependencyContainer {
     }
     
     func createRootViewController() -> RootViewController {
-        let splashViewControllerFactory: () -> SplashViewController = {
+        let splashViewControllerFactory: () -> SplashViewController1 = {
             let dependencyContainer = self.createSplashDependencyContainer()
             return dependencyContainer.createSplashViewController()
         }

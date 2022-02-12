@@ -9,7 +9,6 @@ import RIBs
 import RxSwift
 
 protocol AppRootRouting: ViewableRouting {
-    func attachTabViewControllers()
 }
 
 protocol AppRootPresentable: Presentable {
@@ -17,32 +16,25 @@ protocol AppRootPresentable: Presentable {
     // TODO: Declare methods the interactor can invoke the presenter to present data.
 }
 
-protocol AppRootListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
-}
+protocol AppRootListener: AnyObject { }
 
 final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRootInteractable, AppRootPresentableListener {
-
+    
     weak var router: AppRootRouting?
     weak var listener: AppRootListener?
-
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
+    
     override init(presenter: AppRootPresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
     }
-
+    
     override func didBecomeActive() {
         super.didBecomeActive()
-        print("👶 \(String(describing: self)): \(#function)")
-        
-        
-        router?.attachTabViewControllers()
+        print(" 👶 \(String(describing: self)): \(#function)")
     }
-
+    
     override func willResignActive() {
         super.willResignActive()
-        print("☠️ \(String(describing: self)): \(#function)")
+        print(" ☠️ \(String(describing: self)): \(#function)")
     }
 }

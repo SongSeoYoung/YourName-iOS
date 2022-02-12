@@ -13,7 +13,7 @@ final class RootViewController: ViewController {
     
     init(
         viewModel: RootViewModel,
-        splashViewControllerFactory: @escaping () -> SplashViewController,
+        splashViewControllerFactory: @escaping () -> SplashViewController1,
         signInViewControllerFactory: @escaping () -> WelcomeViewController,
         homeTabBarControllerFactory: @escaping (Secret, Secret) -> HomeTabBarController
     ) {
@@ -57,7 +57,7 @@ final class RootViewController: ViewController {
     }
     
     private let viewModel: RootViewModel
-    private let splashViewControllerFactory: () -> SplashViewController
+    private let splashViewControllerFactory: () -> SplashViewController1
     private let signInViewControllerFactory: () -> WelcomeViewController
     private let homeTabBarControllerFactory: (Secret, Secret) -> HomeTabBarController
     private let disposeBag = DisposeBag()
