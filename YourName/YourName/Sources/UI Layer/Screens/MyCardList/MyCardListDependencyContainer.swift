@@ -13,7 +13,7 @@ final class MyCardListDependencyContainer {
     }
     
     func createMyCardListViewController() -> UIViewController {
-        let viewController = MyCardListViewController.instantiate()
+        let viewController = MyCardListViewControllerL.instantiate()
         let cardDetailViewControllerFactory: (UniqueCode) -> NameCardDetailViewController = { uniqueCode in
             let dependencyContainer = self.createCardDetailDependencyContainer(uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
