@@ -53,16 +53,15 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
         }
     }
     
-    func attachTabViewControllers() {
+    func attachLoggedIn() {
         print(#function)
     }
     
-    func detachTabViewControllers() {
+    func detachLoggedIn() {
         print(#function)
     }
     
     func attachLoggedOut() {
-        self.detachSplash()
         if self.loggedOutRouter != nil { return }
         let router = self.loggedOutBuilder.build(withListener: self.interactor)
         self.loggedOutRouter = router
