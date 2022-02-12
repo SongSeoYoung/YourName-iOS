@@ -20,6 +20,8 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
 
     private let splashBuilder: SplashBuildable
     private var splashRouter: SplashRouting?
+    private let loggedOutBuilder: LoggedOutBuildable
+    private var loggedOutRouter: LoggedOutRouting?
     
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOutRouter: LoggedOutRouting?
