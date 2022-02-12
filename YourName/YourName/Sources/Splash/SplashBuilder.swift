@@ -8,13 +8,13 @@
 import RIBs
 
 protocol SplashDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var localStorage: LocalStorage { get }
+    var network: NetworkServing { get }
 }
 
 final class SplashComponent: Component<SplashDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var localStorage: LocalStorage { dependency.localStorage }
+    fileprivate var network: NetworkServing { dependency.network }
 }
 
 // MARK: - Builder
@@ -33,8 +33,8 @@ final class SplashBuilder: Builder<SplashDependency>, SplashBuildable {
         let component = SplashComponent(dependency: dependency)
         let viewController = SplashViewController.instantiate()
         let authRepository = YourNameAuthenticationRepository(
-            localStorage: UserDefaults.standard,
-            network: Environment.current.network
+            localStorage: component.localStorage,
+            network: component.network
         )
         let interactor = SplashInteractor(
             presenter: viewController,

@@ -9,10 +9,7 @@ import RIBs
 import RxSwift
 
 protocol SplashRouting: ViewableRouting {
-    func attachLoggedIn(accessToken: Secret, refreshToken: Secret)
-    func attachLoggedOut()
-    func detachLoggedIn()
-    func detachLoggedOut()
+    
 }
 
 protocol SplashPresentable: Presentable {
@@ -21,7 +18,10 @@ protocol SplashPresentable: Presentable {
 }
 
 protocol SplashListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func attachLoggedIn(accessToken: Secret, refreshToken: Secret)
+    func attachLoggedOut()
+    func detachLoggedIn()
+    func detachLoggedOut()
 }
 
 final class SplashInteractor: PresentableInteractor<SplashPresentable>, SplashInteractable, SplashPresentableListener {
@@ -42,7 +42,10 @@ final class SplashInteractor: PresentableInteractor<SplashPresentable>, SplashIn
     override func didBecomeActive() {
         super.didBecomeActive()
         print(" 👶 \(String(describing: self)): \(#function)")
-        self.checkLoggedIn()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
+            self?.checkLoggedIn()
+        }
     }
 
     override func willResignActive() {
@@ -55,9 +58,9 @@ final class SplashInteractor: PresentableInteractor<SplashPresentable>, SplashIn
             .subscribe(onNext: { [weak self] authentication in
                 if let accessToken = authentication?.accessToken,
                    let refreshToken = authentication?.refreshToken {
-                    self?.router?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
+                    self?.listener?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
                 } else {
-                    self?.router?.attachLoggedOut()
+                    self?.listener?.attachLoggedOut()
                 }
             })
             .disposed(by: self.disposeBag)
