@@ -15,6 +15,16 @@ protocol LoggedOutDependency: Dependency {
 final class LoggedOutComponent: Component<LoggedOutDependency> {
     fileprivate var localStorage: LocalStorage { dependency.localStorage }
     fileprivate var network: NetworkServing { dependency.network }
+    fileprivate var authRepository: AuthenticationRepository {
+        YourNameAuthenticationRepository(localStorage: localStorage, network: network)
+    }
+    fileprivate let oauthRepository: OAuthRepository
+    
+    init(oauthRepository: OAuthRepository,
+         dependency: LoggedOutDependency) {
+        self.oauthRepository = oauthRepository
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
@@ -30,18 +40,16 @@ final class LoggedOutBuilder: Builder<LoggedOutDependency>, LoggedOutBuildable {
     }
 
     func build(withListener listener: LoggedOutListener) -> LoggedOutRouting {
-        let component = LoggedOutComponent(dependency: dependency)
+        let component = LoggedOutComponent(
+            oauthRepository: YourNameOAuthRepository(),
+            dependency: dependency
+        )
         let viewController = LoggedOutViewController.instantiate()
-        
-        let oauthRepository = YourNameOAuthRepository()
-        let authRepository = YourNameAuthenticationRepository(
-            localStorage: dependency.localStorage,
-            network: dependency.network)
         
         let interactor = LoggedOutInteractor(
             presenter: viewController,
-            oauthRepository: oauthRepository,
-            authRepository: authRepository,
+            oauthRepository: component.oauthRepository,
+            authRepository: component.authRepository,
             localStorage: component.localStorage
         )
         interactor.listener = listener

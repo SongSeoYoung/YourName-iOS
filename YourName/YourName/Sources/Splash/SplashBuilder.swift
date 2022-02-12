@@ -15,6 +15,9 @@ protocol SplashDependency: Dependency {
 final class SplashComponent: Component<SplashDependency> {
     fileprivate var localStorage: LocalStorage { dependency.localStorage }
     fileprivate var network: NetworkServing { dependency.network }
+    fileprivate var authRepository: AuthenticationRepository {
+        YourNameAuthenticationRepository(localStorage: localStorage, network: network)
+    }
 }
 
 // MARK: - Builder
@@ -32,13 +35,10 @@ final class SplashBuilder: Builder<SplashDependency>, SplashBuildable {
     func build(withListener listener: SplashListener) -> SplashRouting {
         let component = SplashComponent(dependency: dependency)
         let viewController = SplashViewController.instantiate()
-        let authRepository = YourNameAuthenticationRepository(
-            localStorage: component.localStorage,
-            network: component.network
-        )
+       
         let interactor = SplashInteractor(
             presenter: viewController,
-            authRepository: authRepository
+            authRepository: component.authRepository
         )
         interactor.listener = listener
         return SplashRouter(interactor: interactor, viewController: viewController)
