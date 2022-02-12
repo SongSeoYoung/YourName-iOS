@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol AppRootInteractable: Interactable, SplashListener {
+protocol AppRootInteractable: Interactable, SplashListener, LoggedOutListener {
     var router: AppRootRouting? { get set }
     var listener: AppRootListener? { get set }
 }
@@ -19,11 +19,15 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
 
     private let splashBuilder: SplashBuildable
     private var splashRouter: SplashRouting?
+    private let loggedOutBuilder: LoggedOutBuildable
+    private var loggedOutRouter: LoggedOutRouting?
     
     init(interactor: AppRootInteractor,
          viewController: AppRootViewControllable,
-         splashBuilder: SplashBuildable) {
+         splashBuilder: SplashBuildable,
+         loggedOutBuilder: LoggedOutBuildable) {
         self.splashBuilder = splashBuilder
+        self.loggedOutBuilder = loggedOutBuilder
         super.init(interactor: interactor,
                    viewController: viewController)
         interactor.router = self
@@ -58,7 +62,12 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
     }
     
     func attachLoggedOut() {
-        print(#function)
+        self.detachSplash()
+        if self.loggedOutRouter != nil { return }
+        let router = self.loggedOutBuilder.build(withListener: self.interactor)
+        self.loggedOutRouter = router
+        self.attachChild(router)
+        self.viewControllable.present(router.viewControllable, animated: true)
     }
     
     func detachLoggedOut() {

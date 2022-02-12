@@ -7,7 +7,7 @@
 
 import RIBs
 
-final class AppRootComponent: Component<EmptyDependency>, SplashDependency {
+final class AppRootComponent: Component<EmptyDependency>, SplashDependency, LoggedOutDependency {
     // app root는 상위 DI받을 것이 없어 EmptyDependency로 정의한다.
     init() {
         super.init(dependency: EmptyComponent())
@@ -31,11 +31,13 @@ final class AppRootBuilder: Builder<EmptyDependency>, AppRootBuildable {
         let viewController = AppRootViewController()
         let interactor = AppRootInteractor(presenter: viewController)
         let spalshBuilder = SplashBuilder(dependency: component)
+        let loggedOutBuilder = LoggedOutBuilder(dependency: component)
         
         return AppRootRouter(
             interactor: interactor,
             viewController: viewController,
-            splashBuilder: spalshBuilder
+            splashBuilder: spalshBuilder,
+            loggedOutBuilder: loggedOutBuilder
         )
     }
 }
