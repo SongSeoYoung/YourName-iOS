@@ -18,4 +18,9 @@ protocol MyCardListPresentableListener: AnyObject {
 final class MyCardListViewController: UIViewController, MyCardListPresentable, MyCardListViewControllable {
 
     weak var listener: MyCardListPresentableListener?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .orange
+    }
 }

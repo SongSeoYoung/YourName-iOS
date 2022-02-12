@@ -18,4 +18,9 @@ protocol CardBooksPresentableListener: AnyObject {
 final class CardBooksViewController: UIViewController, CardBooksPresentable, CardBooksViewControllable {
 
     weak var listener: CardBooksPresentableListener?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .blue
+    }
 }

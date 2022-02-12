@@ -19,4 +19,8 @@ final class AppRootViewController: UITabBarController, AppRootPresentable, AppRo
         super.viewDidLoad()
         self.view.backgroundColor = .white
     }
+    
+    func setupViewControllers(_ viewControllers: ViewControllable...) {
+        super.setViewControllers(viewControllers.map(\.uiviewController), animated: true)
+    }
 }

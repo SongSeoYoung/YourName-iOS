@@ -209,7 +209,7 @@
 		CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */; };
 		CE6BAB9E2704D7610006D26B /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */; };
 		CE6BABA02704D7BF0006D26B /* SplashViewController1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9F2704D7BF0006D26B /* SplashViewController1.storyboard */; };
-		CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA12704D9520006D26B /* SettingViewController.storyboard */; };
+		CE6BABA22704D9520006D26B /* SettingViewController1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA12704D9520006D26B /* SettingViewController1.storyboard */; };
 		CE6BABA52704DAFB0006D26B /* CardInfoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA42704DAFB0006D26B /* CardInfoInputViewController.storyboard */; };
 		CE6BABA72704DB0A0006D26B /* CardInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABA62704DB0A0006D26B /* CardInfoInputViewController.swift */; };
 		CE6BABA92704DB2A0006D26B /* CardInfoInputDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABA82704DB2A0006D26B /* CardInfoInputDependencyContainer.swift */; };
@@ -300,7 +300,7 @@
 		CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */; };
 		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
-		CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController.swift */; };
+		CED16DF726F3A5540076565F /* SettingViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController1.swift */; };
 		CED16DF926F3A55D0076565F /* MyCardListViewControllerL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewControllerL.swift */; };
 		CED16DFB26F3A5690076565F /* CardBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */; };
 		CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */; };
@@ -550,7 +550,7 @@
 		CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9F2704D7BF0006D26B /* SplashViewController1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashViewController1.storyboard; sourceTree = "<group>"; };
-		CE6BABA12704D9520006D26B /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
+		CE6BABA12704D9520006D26B /* SettingViewController1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController1.storyboard; sourceTree = "<group>"; };
 		CE6BABA42704DAFB0006D26B /* CardInfoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardInfoInputViewController.storyboard; sourceTree = "<group>"; };
 		CE6BABA62704DB0A0006D26B /* CardInfoInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoInputViewController.swift; sourceTree = "<group>"; };
 		CE6BABA82704DB2A0006D26B /* CardInfoInputDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoInputDependencyContainer.swift; sourceTree = "<group>"; };
@@ -645,7 +645,7 @@
 		CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.CardBook.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
-		CED16DF626F3A5540076565F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CED16DF626F3A5540076565F /* SettingViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController1.swift; sourceTree = "<group>"; };
 		CED16DF826F3A55D0076565F /* MyCardListViewControllerL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewControllerL.swift; sourceTree = "<group>"; };
 		CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewController.swift; sourceTree = "<group>"; };
 		CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meetu+Moya.swift"; sourceTree = "<group>"; };
@@ -1653,8 +1653,8 @@
 				A223E6D527560ACB00F29FCE /* Notice */,
 				A29DA245271DCE2800B1E647 /* AboutProductionTeam */,
 				A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */,
-				CE6BABA12704D9520006D26B /* SettingViewController.storyboard */,
-				CED16DF626F3A5540076565F /* SettingViewController.swift */,
+				CE6BABA12704D9520006D26B /* SettingViewController1.storyboard */,
+				CED16DF626F3A5540076565F /* SettingViewController1.swift */,
 				A28A9B11271175A70063692D /* SettingViewModel.swift */,
 			);
 			path = Setting;
@@ -1798,7 +1798,7 @@
 				A223E6D727560AD900F29FCE /* NoticeViewController.storyboard in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */,
-				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
+				CE6BABA22704D9520006D26B /* SettingViewController1.storyboard in Resources */,
 				CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardInfoInputViewController.storyboard in Resources */,
 				A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */,
@@ -1998,7 +1998,7 @@
 				CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */,
 				CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
-				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
+				CED16DF726F3A5540076565F /* SettingViewController1.swift in Sources */,
 				CE6AF918276290A700090BD9 /* UpdateCardAPI.swift in Sources */,
 				CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */,
 				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,

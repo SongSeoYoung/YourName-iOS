@@ -7,8 +7,8 @@
 
 import RIBs
 
-final class AppRootComponent: Component<EmptyDependency>, SplashDependency, LoggedOutDependency {
-    var localStorage: LocalStorage 
+final class AppRootComponent: Component<EmptyDependency>, SplashDependency, LoggedOutDependency, MyCardListDependency, CardBooksDependency, SettingDependency {
+    var localStorage: LocalStorage
     var network: NetworkServing
     
     init() {
@@ -34,14 +34,22 @@ final class AppRootBuilder: Builder<EmptyDependency>, AppRootBuildable {
         let component = AppRootComponent()
         let viewController = AppRootViewController()
         let interactor = AppRootInteractor(presenter: viewController)
+        
+        // child buidler
         let spalshBuilder = SplashBuilder(dependency: component)
         let loggedOutBuilder = LoggedOutBuilder(dependency: component)
+        let myCardListBuilder = MyCardListBuilder(dependency: component)
+        let cardBooksBuilder = CardBooksBuilder(dependency: component)
+        let settingBuilder = SettingBuilder(dependency: component)
         
         return AppRootRouter(
             interactor: interactor,
             viewController: viewController,
             splashBuilder: spalshBuilder,
-            loggedOutBuilder: loggedOutBuilder
+            loggedOutBuilder: loggedOutBuilder,
+            myCardListBuilder: myCardListBuilder,
+            cardBooksBuilder: cardBooksBuilder,
+            settingBuilder: settingBuilder
         )
     }
 }

@@ -18,4 +18,9 @@ protocol SettingPresentableListener: AnyObject {
 final class SettingViewController: UIViewController, SettingPresentable, SettingViewControllable {
 
     weak var listener: SettingPresentableListener?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .red
+    }
 }

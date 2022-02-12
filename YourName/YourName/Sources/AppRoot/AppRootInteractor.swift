@@ -11,7 +11,7 @@ import RxSwift
 protocol AppRootRouting: ViewableRouting {
     func attachSplash()
     func detachSplash()
-    func attachLoggedIn()
+    func attachLoggedIn(accessToken: Secret, refreshToken: Secret)
     func detachLoggedIn()
     func attachLoggedOut()
     func detachLoggedOut()
@@ -48,8 +48,8 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     
     // MARK: - SplashListener
     func attachLoggedIn(accessToken: Secret, refreshToken: Secret) {
-        print(#function)
-        self.router?.attachLoggedIn()
+        self.router?.detachSplash()
+        self.router?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
     }
     
     func attachLoggedOut() {
@@ -58,7 +58,6 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     }
     
     func detachLoggedIn() {
-        print(#function)
         self.router?.detachLoggedOut()
     }
     
@@ -69,9 +68,10 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     
     
     // MARK: - LoggedOutListener
+    
     func successLoggedIn(accessToken: Secret, refreshToken: Secret) {
         self.router?.detachLoggedOut()
-        self.router?.attachLoggedIn()
+        self.router?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
     }
     
 }
