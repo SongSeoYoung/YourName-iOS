@@ -42,7 +42,10 @@ final class SplashInteractor: PresentableInteractor<SplashPresentable>, SplashIn
     override func didBecomeActive() {
         super.didBecomeActive()
         print(" 👶 \(String(describing: self)): \(#function)")
-        self.checkLoggedIn()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
+            self?.checkLoggedIn()
+        }
     }
 
     override func willResignActive() {

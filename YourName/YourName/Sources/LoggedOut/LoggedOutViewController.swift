@@ -10,15 +10,30 @@ import RxSwift
 import UIKit
 
 protocol LoggedOutPresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func loggedIn(with provider: Provider)
 }
 
 final class LoggedOutViewController: UIViewController, LoggedOutPresentable, LoggedOutViewControllable, Storyboarded {
 
     @IBOutlet private weak var loggedInWithKakao: UIButton!
     @IBOutlet private weak var loggedInWithApple: UIButton!
+    private let disposeBag = DisposeBag()
     
     weak var listener: LoggedOutPresentableListener?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.bind()
+    }
+    
+    private func bind() {
+        Observable.merge(
+            self.loggedInWithApple.rx.throttleTap.map { _ in return Provider.apple },
+            self.loggedInWithKakao.rx.throttleTap.map { _ in return Provider.kakao }
+            )
+            .bind(onNext: { [weak self] provider in
+                self?.listener?.loggedIn(with: provider)
+            })
+            .disposed(by: self.disposeBag)
+    }
 }

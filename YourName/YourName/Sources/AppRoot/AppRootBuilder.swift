@@ -8,8 +8,12 @@
 import RIBs
 
 final class AppRootComponent: Component<EmptyDependency>, SplashDependency, LoggedOutDependency {
-    // app root는 상위 DI받을 것이 없어 EmptyDependency로 정의한다.
+    var localStorage: LocalStorage 
+    var network: NetworkServing
+    
     init() {
+        self.localStorage = UserDefaults.standard
+        self.network = Environment.current.network
         super.init(dependency: EmptyComponent())
     }
 }

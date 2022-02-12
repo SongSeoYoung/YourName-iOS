@@ -66,4 +66,11 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
         print(#function)
         self.router?.detachLoggedOut()
     }
+    
+    
+    // MARK: - LoggedOutListener
+    func successLoggedIn(accessToken: Secret, refreshToken: Secret) {
+        print(#function)
+    }
+    
 }

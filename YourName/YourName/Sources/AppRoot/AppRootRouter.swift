@@ -42,12 +42,12 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
         let router = self.splashBuilder.build(withListener: self.interactor)
         self.splashRouter = router
         self.attachChild(router)
-        self.viewControllable.present(router.viewControllable, animated: true)
+        self.viewControllable.present(router.viewControllable, animated: false)
     }
     
     func detachSplash() {
         if let router = self.splashRouter {
-            self.viewControllable.dismiss(animated: true, compleition: nil)
+            self.viewControllable.dismiss(animated: false, compleition: nil)
             self.detachChild(router)
             self.splashRouter = nil
         }
