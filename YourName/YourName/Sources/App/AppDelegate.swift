@@ -9,23 +9,25 @@ import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import Firebase
-//import FLEX
+import FLEX
+import RIBs
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private let rootDependencyContainer = RootDependencyContainer()
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = rootDependencyContainer.createRootViewController()
-        let window = UIWindow()
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
+    var launchRouter: LaunchRouting?
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+    -> Bool {
+        self.launchRouter = AppRootBuilder(dependency: EmptyComponent()).build()
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        
+        launchRouter?.launch(from: window)
         kakaoSDKInit()
         FirebaseApp.configure()
-//        FLEXManager.shared.showExplorer()
+        FLEXManager.shared.showExplorer()
         return true
     }
     

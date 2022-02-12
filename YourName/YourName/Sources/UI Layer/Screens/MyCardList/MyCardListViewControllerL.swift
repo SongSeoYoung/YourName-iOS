@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  MyCardListViewControllerL.swift
 //  YourName
 //
 //  Created by Booung on 2021/09/17.
@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-final class MyCardListViewController: ViewController, Storyboarded {
+final class MyCardListViewControllerL: ViewController, Storyboarded {
     
     // MARK: - UIComponents
     
@@ -42,7 +42,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
 }
 
 // MARK: - Methods
-extension MyCardListViewController {
+extension MyCardListViewControllerL {
     
     private func configure(collectionView: UICollectionView) {
         collectionView.decelerationRate = .fast
@@ -125,7 +125,7 @@ extension MyCardListViewController {
 
 //MARK: - UICollectionViewDataSource
 
-extension MyCardListViewController: UICollectionViewDataSource {
+extension MyCardListViewControllerL: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return self.myCardList.isNotEmpty ? self.myCardList.count : 1
@@ -157,7 +157,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MyCardListViewController: UICollectionViewDelegate {
+extension MyCardListViewControllerL: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -169,7 +169,7 @@ extension MyCardListViewController: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
+extension MyCardListViewControllerL: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -185,7 +185,7 @@ extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UIScrollViewDelegate
 
-extension MyCardListViewController: UIScrollViewDelegate {
+extension MyCardListViewControllerL: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,

@@ -44,6 +44,10 @@ target 'MEETU' do
   # 🎨 UI
   pod 'lottie-ios'
 
+
+  # 🧩 archiecture
+  pod 'RIBs', :git => 'https://github.com/uber/RIBs.git', :tag => '0.9.2'
+
   
   target 'YourNameTests' do
     pod 'RxTest','~>5.0'
