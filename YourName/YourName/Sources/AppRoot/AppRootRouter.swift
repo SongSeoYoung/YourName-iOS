@@ -15,8 +15,8 @@ protocol AppRootInteractable: Interactable, SplashListener {
 protocol AppRootViewControllable: ViewControllable {
 }
 
-final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControllable>, AppRootRouting {
-    
+final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControllable>, AppRootRouting {    
+
     private let splashBuilder: SplashBuildable
     private var splashRouter: SplashRouting?
     
@@ -31,14 +31,37 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
     
     override func didLoad() {
         super.didLoad()
-        self.attachLaunch()
     }
     
-    private func attachLaunch() {
+    func attachSplash() {
         if self.splashRouter != nil { return }
         let router = self.splashBuilder.build(withListener: self.interactor)
         self.splashRouter = router
         self.attachChild(router)
         self.viewControllable.present(router.viewControllable, animated: true)
+    }
+    
+    func detachSplash() {
+        if let router = self.splashRouter {
+            self.viewControllable.dismiss(animated: true, compleition: nil)
+            self.detachChild(router)
+            self.splashRouter = nil
+        }
+    }
+    
+    func attachTabViewControllers() {
+        print(#function)
+    }
+    
+    func detachTabViewControllers() {
+        print(#function)
+    }
+    
+    func attachLoggedOut() {
+        print(#function)
+    }
+    
+    func detachLoggedOut() {
+        print(#function)
     }
 }

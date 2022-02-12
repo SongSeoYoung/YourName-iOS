@@ -9,6 +9,12 @@ import RIBs
 import RxSwift
 
 protocol AppRootRouting: ViewableRouting {
+    func attachSplash()
+    func detachSplash()
+    func attachTabViewControllers()
+    func detachTabViewControllers()
+    func attachLoggedOut()
+    func detachLoggedOut()
 }
 
 protocol AppRootPresentable: Presentable {
@@ -31,10 +37,33 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     override func didBecomeActive() {
         super.didBecomeActive()
         print(" 👶 \(String(describing: self)): \(#function)")
+        self.router?.attachSplash()
     }
     
     override func willResignActive() {
         super.willResignActive()
         print(" ☠️ \(String(describing: self)): \(#function)")
+    }
+    
+    
+    // MARK: - SplashListener
+    func attachLoggedIn(accessToken: Secret, refreshToken: Secret) {
+        print(#function)
+        self.router?.attachTabViewControllers()
+    }
+    
+    func attachLoggedOut() {
+        print(#function)
+        self.router?.attachLoggedOut()
+    }
+    
+    func detachLoggedIn() {
+        print(#function)
+        self.router?.detachLoggedOut()
+    }
+    
+    func detachLoggedOut() {
+        print(#function)
+        self.router?.detachLoggedOut()
     }
 }

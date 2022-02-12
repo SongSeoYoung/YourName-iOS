@@ -60,9 +60,6 @@
 		A2CBF4D227B79F3500D31CE4 /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4CD27B79F3500D31CE4 /* MyCardListViewController.swift */; };
 		A2CBF4D327B79F3500D31CE4 /* MyCardListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4CE27B79F3500D31CE4 /* MyCardListBuilder.swift */; };
 		A2CBF4D427B79F3500D31CE4 /* MyCardListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4CF27B79F3500D31CE4 /* MyCardListInteractor.swift */; };
-		A2CBF4D927B7AB6000D31CE4 /* LoggedInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4D627B7AB6000D31CE4 /* LoggedInRouter.swift */; };
-		A2CBF4DA27B7AB6000D31CE4 /* LoggedInBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4D727B7AB6000D31CE4 /* LoggedInBuilder.swift */; };
-		A2CBF4DB27B7AB6000D31CE4 /* LoggedInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4D827B7AB6000D31CE4 /* LoggedInInteractor.swift */; };
 		A2CBF4FA27B7B37B00D31CE4 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4F527B7B37B00D31CE4 /* SplashRouter.swift */; };
 		A2CBF4FB27B7B37B00D31CE4 /* SplashViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF4F627B7B37B00D31CE4 /* SplashViewController.storyboard */; };
 		A2CBF4FC27B7B37B00D31CE4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF4F727B7B37B00D31CE4 /* SplashViewController.swift */; };
@@ -389,9 +386,6 @@
 		A2CBF4CD27B79F3500D31CE4 /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
 		A2CBF4CE27B79F3500D31CE4 /* MyCardListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListBuilder.swift; sourceTree = "<group>"; };
 		A2CBF4CF27B79F3500D31CE4 /* MyCardListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListInteractor.swift; sourceTree = "<group>"; };
-		A2CBF4D627B7AB6000D31CE4 /* LoggedInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInRouter.swift; sourceTree = "<group>"; };
-		A2CBF4D727B7AB6000D31CE4 /* LoggedInBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInBuilder.swift; sourceTree = "<group>"; };
-		A2CBF4D827B7AB6000D31CE4 /* LoggedInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInInteractor.swift; sourceTree = "<group>"; };
 		A2CBF4F527B7B37B00D31CE4 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
 		A2CBF4F627B7B37B00D31CE4 /* SplashViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashViewController.storyboard; sourceTree = "<group>"; };
 		A2CBF4F727B7B37B00D31CE4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -762,16 +756,6 @@
 				A2CBF4CF27B79F3500D31CE4 /* MyCardListInteractor.swift */,
 			);
 			path = MyCardList;
-			sourceTree = "<group>";
-		};
-		A2CBF4D527B7AA4E00D31CE4 /* LoggedIn */ = {
-			isa = PBXGroup;
-			children = (
-				A2CBF4D627B7AB6000D31CE4 /* LoggedInRouter.swift */,
-				A2CBF4D727B7AB6000D31CE4 /* LoggedInBuilder.swift */,
-				A2CBF4D827B7AB6000D31CE4 /* LoggedInInteractor.swift */,
-			);
-			path = LoggedIn;
 			sourceTree = "<group>";
 		};
 		A2CBF4F427B7B36C00D31CE4 /* Splash */ = {
@@ -1258,7 +1242,6 @@
 			children = (
 				A2CBF4C127B7987D00D31CE4 /* AppRoot */,
 				A2CBF4F427B7B36C00D31CE4 /* Splash */,
-				A2CBF4D527B7AA4E00D31CE4 /* LoggedIn */,
 				A2CBF4CA27B79E7800D31CE4 /* MyCardList */,
 				CEB6585E26EB297F00C11F33 /* App */,
 				CEB6586026EB29B000C11F33 /* Common */,
@@ -1956,7 +1939,6 @@
 				A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
 				CEDA4B90275126030011D0CA /* Entity.Empty.swift in Sources */,
-				A2CBF4DA27B7AB6000D31CE4 /* LoggedInBuilder.swift in Sources */,
 				CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
@@ -2008,7 +1990,6 @@
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
-				A2CBF4DB27B7AB6000D31CE4 /* LoggedInInteractor.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
@@ -2100,7 +2081,6 @@
 				CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController1.swift in Sources */,
-				A2CBF4D927B7AB6000D31CE4 /* LoggedInRouter.swift in Sources */,
 				CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */,
 				CEDA4B94275138350011D0CA /* QuestWaitingDoneAPI.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewControllerL.swift in Sources */,

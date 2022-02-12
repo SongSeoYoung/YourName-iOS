@@ -23,20 +23,4 @@ final class SplashRouter: ViewableRouter<SplashInteractable, SplashViewControlla
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
-    
-    func attachLoggedIn(accessToken: Secret, refreshToken: Secret) {
-        print(#function)
-    }
-    
-    func attachLoggedOut() {
-        print(#function)
-    }
-    
-    func detachLoggedIn() {
-        print(#function)
-    }
-    
-    func detachLoggedOut() {
-        print(#function)
-    }
 }
