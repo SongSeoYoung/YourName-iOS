@@ -18,7 +18,7 @@ final class SettingDependencyContainer {
     }
     
     func settingViewController() -> UIViewController {
-        let viewController = SettingViewController.instantiate()
+        let viewController = SettingViewController1.instantiate()
         viewController.viewModel = self.createSettingViewModel()
         
         let aboutProductionTeamFactory: () -> AboutProductionTeamViewController = {

@@ -41,7 +41,7 @@ final class SignedInDependencyContainer {
         case .myCardList:
             let dependencyContainer = createMyCardListDependencyContainer()
             viewController = dependencyContainer.createMyCardListViewController()
-        case .cardBook:
+        case .cardBooks:
             let dependencyContainer = createCardBookListDependencyContainer()
             viewController = dependencyContainer.createCardBookListViewController()
         case .setting:

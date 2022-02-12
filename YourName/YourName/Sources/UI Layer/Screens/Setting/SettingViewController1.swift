@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  SettingViewController1.swift
 //  YourName
 //
 //  Created by Booung on 2021/09/17.
@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class SettingViewController: ViewController, Storyboarded {
+final class SettingViewController1: ViewController, Storyboarded {
     
     @IBOutlet private unowned var questNotiView: UIView!
     @IBOutlet private unowned var resignButton: UIButton!
@@ -37,7 +37,7 @@ final class SettingViewController: ViewController, Storyboarded {
 
 // MARK: - Method
 
-extension SettingViewController {
+extension SettingViewController1 {
     
     private func configureUI() {
         self.navigationController?.navigationBar.isHidden = true
@@ -114,7 +114,7 @@ extension SettingViewController {
 }
 
 // MARK: - Navigation
-extension SettingViewController {
+extension SettingViewController1 {
     private func navigate(_ navigation: SettingNavigation) {
         let viewController = createViewController(navigation.destination)
         self.navigate(viewController, action: navigation.action)
