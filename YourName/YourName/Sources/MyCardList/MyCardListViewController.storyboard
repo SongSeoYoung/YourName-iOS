@@ -1,27 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9W-cL-JuB">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Card List View ControllerL-->
-        <scene sceneID="GzV-lN-fg7">
+        <!--My Card List View Controller-->
+        <scene sceneID="L7s-lM-kMy">
             <objects>
-                <viewController id="vKn-9P-Ny8" customClass="MyCardListViewControllerL" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="L9W-cL-JuB" customClass="MyCardListViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PnB-Ms-bqN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메시님의 미츄 (4)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p8-uW-QGp">
+                                <rect key="frame" x="24" y="29" width="142" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPP-QV-2kf">
+                                <rect key="frame" x="0.0" y="73" width="375" height="484"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="16" id="fIZ-dL-2GD">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="Fmv-2m-saP">
+                                        <rect key="frame" x="24" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WaT-u8-aUn">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="L9W-cL-JuB" id="ylS-Az-V0R"/>
+                                    <outlet property="delegate" destination="L9W-cL-JuB" id="s1A-7z-xIT"/>
+                                </connections>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-C5-rFw">
+                                <rect key="frame" x="130" y="584" width="115.5" height="26"/>
+                                <color key="pageIndicatorTintColor" name="lightGray4"/>
+                                <color key="currentPageIndicatorTintColor" name="gray2"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx3-B1-UNE">
+                                <rect key="frame" x="287" y="17" width="64" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="jSk-5Q-Jki"/>
+                                    <constraint firstAttribute="height" constant="48" id="mrH-Ek-l0A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                <state key="normal" title="미츄" image="btn_add_grey_bold">
+                                    <color key="titleColor" name="gray2"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7zL-rI-DrJ"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dx3-B1-UNE" firstAttribute="centerY" secondItem="0p8-uW-QGp" secondAttribute="centerY" id="Djj-fK-plp"/>
+                            <constraint firstItem="hPP-QV-2kf" firstAttribute="leading" secondItem="7zL-rI-DrJ" secondAttribute="leading" id="KGu-04-Kgw"/>
+                            <constraint firstItem="7zL-rI-DrJ" firstAttribute="trailing" secondItem="hPP-QV-2kf" secondAttribute="trailing" id="S6c-bp-52T"/>
+                            <constraint firstItem="R9a-C5-rFw" firstAttribute="centerX" secondItem="7zL-rI-DrJ" secondAttribute="centerX" id="biu-X2-dvj"/>
+                            <constraint firstItem="7zL-rI-DrJ" firstAttribute="bottom" secondItem="R9a-C5-rFw" secondAttribute="bottom" constant="57" id="d5Y-gK-FIN"/>
+                            <constraint firstItem="hPP-QV-2kf" firstAttribute="top" secondItem="0p8-uW-QGp" secondAttribute="bottom" constant="20" id="dF4-rp-AV1"/>
+                            <constraint firstItem="R9a-C5-rFw" firstAttribute="top" secondItem="hPP-QV-2kf" secondAttribute="bottom" constant="27" id="hO2-bz-K66"/>
+                            <constraint firstItem="0p8-uW-QGp" firstAttribute="top" secondItem="7zL-rI-DrJ" secondAttribute="top" constant="29" id="mmU-h5-q64"/>
+                            <constraint firstItem="7zL-rI-DrJ" firstAttribute="trailing" secondItem="dx3-B1-UNE" secondAttribute="trailing" constant="24" id="qts-C8-j3R"/>
+                            <constraint firstItem="0p8-uW-QGp" firstAttribute="leading" secondItem="7zL-rI-DrJ" secondAttribute="leading" constant="24" id="sqD-2I-mMd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addMeetuButton" destination="dx3-B1-UNE" id="Dua-R7-HTR"/>
+                        <outlet property="myCardCollectionView" destination="hPP-QV-2kf" id="h4H-uP-eV4"/>
+                        <outlet property="myCardListTitleLabel" destination="0p8-uW-QGp" id="46D-W4-pem"/>
+                        <outlet property="pageControl" destination="R9a-C5-rFw" id="6BS-fW-OZ7"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MJg-dh-fyQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="205"/>
+            <point key="canvasLocation" x="-6" y="153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_add_grey_bold" width="20" height="20"/>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray4">
+            <color red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

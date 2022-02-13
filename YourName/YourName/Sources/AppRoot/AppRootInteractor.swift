@@ -49,6 +49,7 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     // MARK: - SplashListener
     func attachLoggedIn(accessToken: Secret, refreshToken: Secret) {
         self.router?.detachSplash()
+        self.setupAuth(accessToken: accessToken, refreshToken: refreshToken)
         self.router?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
     }
     
@@ -62,7 +63,6 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     }
     
     func detachLoggedOut() {
-        print(#function)
         self.router?.detachLoggedOut()
     }
     
@@ -71,7 +71,17 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     
     func successLoggedIn(accessToken: Secret, refreshToken: Secret) {
         self.router?.detachLoggedOut()
+        self.setupAuth(accessToken: accessToken, refreshToken: refreshToken)
         self.router?.attachLoggedIn(accessToken: accessToken, refreshToken: refreshToken)
     }
     
+}
+
+extension AppRootInteractor {
+    func setupAuth(accessToken: Secret, refreshToken: Secret) {
+        Environment.current.network.setupAuthentication(
+            accessToken: accessToken,
+            refreshToken: refreshToken
+        )
+    }
 }

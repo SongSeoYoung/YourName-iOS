@@ -6,15 +6,30 @@
 //
 
 import RIBs
+import RxRelay
 
 protocol MyCardListDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
 }
 
-final class MyCardListComponent: Component<MyCardListDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class MyCardListComponent: Component<MyCardListDependency>, AlertDependency {
+    
+    fileprivate let myCardRepository: MyCardRepository
+    fileprivate let questRepository: QuestRepository
+    var alertModel: BehaviorRelay<AlertModel1?>
+    
+    init(
+        dependency: MyCardListDependency,
+        myCardRepository: MyCardRepository,
+        questRepository: QuestRepository,
+        alertModel: BehaviorRelay<AlertModel1?>
+    ) {
+        self.myCardRepository = myCardRepository
+        self.questRepository = questRepository
+        self.alertModel = alertModel
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
@@ -30,10 +45,31 @@ final class MyCardListBuilder: Builder<MyCardListDependency>, MyCardListBuildabl
     }
 
     func build(withListener listener: MyCardListListener) -> MyCardListRouting {
-        let component = MyCardListComponent(dependency: dependency)
-        let viewController = MyCardListViewController()
-        let interactor = MyCardListInteractor(presenter: viewController)
+        let myCardRepository = YourNameMyCardRepository()
+        let questRepository = YourNameQuestRepository()
+        let alert = BehaviorRelay<AlertModel1?>(value: nil)
+        let component = MyCardListComponent(
+            dependency: dependency,
+            myCardRepository: myCardRepository,
+            questRepository: questRepository,
+            alertModel: alert
+        )
+        let viewController = MyCardListViewController.instantiate()
+        let interactor = MyCardListInteractor(
+            presenter: viewController,
+            myCardRepository: component.myCardRepository,
+            questRepository: component.questRepository,
+            alert: alert
+        )
         interactor.listener = listener
-        return MyCardListRouter(interactor: interactor, viewController: viewController)
+        
+        // child builder
+        let alertBuildable = AlertBuilder(dependency: component)
+        
+        return MyCardListRouter(
+            interactor: interactor,
+            viewController: viewController,
+            alertBuildable: alertBuildable
+        )
     }
 }

@@ -23,7 +23,7 @@ final class MyCardListViewModel {
     let navigation = PublishRelay<MyCardListNavigation>()
     let myCardViewModels = BehaviorRelay<[MyCardCellViewModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
-    let alertViewController = PublishRelay<AlertViewController>()
+    let alertViewController = PublishRelay<AlertViewController1>()
     
     private let myCardRepository: MyCardRepository
     private let questRepository: QuestRepository
@@ -43,7 +43,7 @@ final class MyCardListViewModel {
     
     func checkQuest() {
         self.questRepository.fetchAll()
-            .compactMap { quests -> AlertViewController? in
+            .compactMap { quests -> AlertViewController1? in
                 let index = quests.firstIndex(where: { quest in
                     return quest.meta == .makeFirstNameCard
                 }) ?? 0
@@ -51,7 +51,7 @@ final class MyCardListViewModel {
                 if quest.status == .notAchieved {
                    
                     
-                    let controller = AlertViewController.instantiate()
+                    let controller = AlertViewController1.instantiate()
                     let confirmAction: () -> Void = { [weak self] in
                         controller.dismiss()
                         self?.navigation.accept(.present(MyCardListDestination.quest))

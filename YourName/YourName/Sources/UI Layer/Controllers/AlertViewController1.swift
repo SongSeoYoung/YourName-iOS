@@ -21,7 +21,7 @@ struct AlertItem {
     let defaultAction: AlertAction
 }
 
-final class AlertViewController: ViewController, Storyboarded {
+final class AlertViewController1: ViewController, Storyboarded {
 
     @IBOutlet private unowned var titleLabel: UILabel!
     @IBOutlet private unowned var messageLabel: UILabel!

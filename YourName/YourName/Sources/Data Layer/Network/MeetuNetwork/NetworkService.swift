@@ -52,8 +52,8 @@ final class NetworkService: NetworkServing {
                             .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>>in
                                 self?.accessToken = nil
                                 self?.refreshToken = nil
-                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
+//                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//                                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
                                 return .empty()
                             }
                     }

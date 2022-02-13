@@ -23,7 +23,7 @@ final class SettingViewModel {
     let navigation = PublishRelay<SettingNavigation>()
     let backToFirst = PublishRelay<Void>()   // 네이밍.. 모르겠어요 추천받습니다.
     let isLoading = PublishRelay<Bool>()
-    let alert = PublishRelay<AlertViewController>()
+    let alert = PublishRelay<AlertViewController1>()
     
     private let authRepository: AuthenticationRepository
     private let disposeBag = DisposeBag()
@@ -66,7 +66,7 @@ final class SettingViewModel {
     
     func tapResign() {
         
-        let alertController = AlertViewController.instantiate()
+        let alertController = AlertViewController1.instantiate()
         let resignAction = { [weak self] in
             guard let self = self else { return }
             

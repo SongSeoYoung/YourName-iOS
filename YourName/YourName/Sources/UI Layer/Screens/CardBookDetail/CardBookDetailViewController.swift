@@ -116,7 +116,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 
         self.viewModel.shouldShowRemoveReconfirmAlert
             .subscribe(onNext: {
-                let alertController = AlertViewController.instantiate()
+                let alertController = AlertViewController1.instantiate()
                 let okAction = { [weak self] in
                     guard let self = self else { return }
                     alertController.dismiss()

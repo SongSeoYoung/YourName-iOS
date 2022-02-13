@@ -29,7 +29,7 @@ final class NameCardDetailViewModel {
         case friendCard
     }
     
-    let alertController = PublishRelay<AlertViewController>()
+    let alertController = PublishRelay<AlertViewController1>()
     let navigation = PublishRelay<NameCardDetailNavigation>()
     let state = BehaviorRelay<State?>(value: nil)
     let backgroundColor = BehaviorRelay<ColorSource?>(value: nil)
@@ -175,7 +175,7 @@ final class NameCardDetailViewModel {
 extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
     func didTapRemoveCard(uniqueCode: UniqueCode) {
         
-        let alertController = AlertViewController.instantiate()
+        let alertController = AlertViewController1.instantiate()
         let deleteAction = { [weak self] in
             guard let self = self else { return }
             alertController.dismiss(animated: true)
