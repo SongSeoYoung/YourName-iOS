@@ -19,6 +19,8 @@ protocol MyCardListRouting: ViewableRouting {
 protocol MyCardListPresentable: Presentable {
     var listener: MyCardListPresentableListener? { get set }
     var myCards: BehaviorRelay<[MyCardCellViewModel]> { get }
+    func reloadCollectionView()
+    func setupMyCards(count: Int)
 }
 
 protocol MyCardListListener: AnyObject {
@@ -109,6 +111,8 @@ final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, 
             }
             .bind(onNext: { [weak self] in
                 self?.presenter.myCards.accept($0)
+                self?.presenter.reloadCollectionView()
+                self?.presenter.setupMyCards(count: $0.count)
             })
             .disposed(by: self.disposeBag)
     }

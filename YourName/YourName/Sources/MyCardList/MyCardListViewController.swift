@@ -50,12 +50,16 @@ final class MyCardListViewController: UIViewController, MyCardListPresentable, M
                 self?.listener?.didTapMyCard(at: $0)
             })
             .disposed(by: self.disposeBag)
-        
-        self.myCards
-            .bind(onNext: { [weak self] _ in
-                self?.myCardCollectionView.reloadData()
-            })
-            .disposed(by: self.disposeBag)
+    }
+    
+    // MyCardListPresentable
+    func reloadCollectionView() {
+        self.myCardCollectionView.reloadData()
+      
+    }
+    func setupMyCards(count: Int) {
+        self.myCardListTitleLabel.text = "나의 미츄 (\(count))"
+        self.pageControl.numberOfPages = count
     }
 }
 
@@ -97,9 +101,8 @@ extension MyCardListViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
-    
 }
+
 extension MyCardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
