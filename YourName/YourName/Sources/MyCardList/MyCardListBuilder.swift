@@ -13,8 +13,18 @@ protocol MyCardListDependency: Dependency {
 }
 
 final class MyCardListComponent: Component<MyCardListDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate let myCardRepository: MyCardRepository
+    fileprivate let questRepository: QuestRepository
+    
+    init(
+        dependency: MyCardListDependency,
+        myCardRepository: MyCardRepository,
+         questRepository: QuestRepository
+    ) {
+        self.myCardRepository = myCardRepository
+        self.questRepository = questRepository
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
@@ -30,9 +40,19 @@ final class MyCardListBuilder: Builder<MyCardListDependency>, MyCardListBuildabl
     }
 
     func build(withListener listener: MyCardListListener) -> MyCardListRouting {
-        let component = MyCardListComponent(dependency: dependency)
-        let viewController = MyCardListViewController()
-        let interactor = MyCardListInteractor(presenter: viewController)
+        let myCardRepository = YourNameMyCardRepository()
+        let questRepository = YourNameQuestRepository()
+        let component = MyCardListComponent(
+            dependency: dependency,
+            myCardRepository: myCardRepository,
+            questRepository: questRepository
+        )
+        let viewController = MyCardListViewController.instantiate()
+        let interactor = MyCardListInteractor(
+            presenter: viewController,
+            myCardRepository: component.myCardRepository,
+            questRepository: component.questRepository
+        )
         interactor.listener = listener
         return MyCardListRouter(interactor: interactor, viewController: viewController)
     }

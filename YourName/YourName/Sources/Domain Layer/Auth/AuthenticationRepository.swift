@@ -83,13 +83,13 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
     
     private func save(accessToken: String)  {
         self.localStorage.write(.accessToken, value: accessToken)
-            .subscribe { print("access token save success \($0)") }
+            .subscribe()
             .disposed(by: self.disposeBag)
     }
     
     private func save(refreshToken: String) {
         self.localStorage.write(.refreshToken, value: refreshToken)
-            .subscribe { print("refresh token save success \($0)") }
+            .subscribe()
             .disposed(by: self.disposeBag)
     }
     

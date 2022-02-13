@@ -20,8 +20,6 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
 
     private let splashBuilder: SplashBuildable
     private var splashRouter: SplashRouting?
-    private let loggedOutBuilder: LoggedOutBuildable
-    private var loggedOutRouter: LoggedOutRouting?
     
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOutRouter: LoggedOutRouting?
@@ -94,7 +92,11 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
     }
     
     func detachLoggedOut() {
-        print(#function)
+        if let router = self.loggedOutRouter {
+            self.viewControllable.dismiss(animated: false, compleition: nil)
+            self.detachChild(router)
+            self.loggedOutRouter = nil
+        }
     }
 }
 

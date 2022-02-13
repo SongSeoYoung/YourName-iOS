@@ -19,8 +19,26 @@ protocol MyCardListViewControllable: ViewControllable {
 final class MyCardListRouter: ViewableRouter<MyCardListInteractable, MyCardListViewControllable>, MyCardListRouting {
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: MyCardListInteractable, viewController: MyCardListViewControllable) {
+    override init(
+        interactor: MyCardListInteractable,
+        viewController: MyCardListViewControllable
+    ) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+    
+    
+    func attachCardCreation() {
+        print(#function)
+    }
+    func detachCardCreation() {
+        print(#function)
+    }
+    
+    func attachMyCardDetail(cardCode: UniqueCode) {
+        print(#function)
+    }
+    func detachMyCardDetail() {
+        print(#function)
     }
 }
