@@ -14,6 +14,10 @@ protocol MyCardListRouting: ViewableRouting {
     func detachMyCardDetail()
     func attachCardCreation()
     func detachCardCreation()
+    func attachAlert()
+    func detachAlert()
+    func attachQuest()
+    func detachQuest()
 }
 
 protocol MyCardListPresentable: Presentable {
@@ -34,14 +38,17 @@ final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, 
     private let myCardRepository: MyCardRepository
     private let questRepository: QuestRepository
     private let disposeBag: DisposeBag
+    private let alert: BehaviorRelay<AlertModel1?>
 
     init(
         presenter: MyCardListPresentable,
         myCardRepository: MyCardRepository,
-        questRepository: QuestRepository
+        questRepository: QuestRepository,
+        alert: BehaviorRelay<AlertModel1?>
     ) {
         self.myCardRepository = myCardRepository
         self.questRepository = questRepository
+        self.alert = alert
         self.disposeBag = .init()
         super.init(presenter: presenter)
         presenter.listener = self
@@ -50,7 +57,7 @@ final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, 
     override func didBecomeActive() {
         super.didBecomeActive()
         print(" 👶 \(String(describing: self)): \(#function)")
-//        self.checkOnboarding()
+        self.checkOnboarding()
         self.fetchMyCards()
     }
 
@@ -70,33 +77,35 @@ final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, 
     }
     
     private func checkOnboarding() {
-//        self.questRepository.fetchAll()
-//            .compactMap { quests -> AlertViewController? in
+        self.questRepository.fetchAll()
+//            .filter { quests in
 //                let index = quests.firstIndex(where: { quest in
 //                    return quest.meta == .makeFirstNameCard
 //                }) ?? 0
-//                guard let quest = quests[safe: index] else { return nil }
-//                if quest.status == .notAchieved {
-//
-//                    let controller = AlertViewController.instantiate()
-//                    let confirmAction: () -> Void = { [weak self] in
-//                        controller.dismiss()
-//                        self?.navigation.accept(.present(MyCardListDestination.quest))
-//                    }
-//                    controller.configure(item: .init(title: "미츄를 만들어봐츄!",
-//                                                     messages: "미츄와 함께 퀘스트를 클리어하고,\n유니크 컬러를 획득하츄!",
-//                                                     image: UIImage(named: "icon_onboardingMeetU")!,
-//                                                     emphasisAction: .init(title: "퀘스트 확인하기",
-//                                                                           action: confirmAction),
-//                                                     defaultAction: .init(title: "건너뛰기",
-//                                                                          action: { controller.dismiss() })))
-//
-//                    return controller
-//                }
-//                return nil
+//                guard let quest = quests[safe: index] else { return false }
+//                return quest.status == .notAchieved
 //            }
-//            .bind(to: self.alertViewController)
-//            .disposed(by: self.disposeBag)
+            .bind(onNext: { [weak self] _ in
+                let okAction = { [weak self] in
+                    guard let self = self else { return }
+                    self.router?.detachAlert()
+                    self.router?.attachQuest()
+                }
+                let cancelAction = { [weak self] in
+                    guard let self = self else { return }
+                    self.router?.detachAlert()
+                }
+                self?.router?.attachAlert()
+                self?.alert.accept(AlertModel1(alertTitle: "미츄를 만들어봐츄!",
+                                               alertDesc: "미츄와 함께 퀘스트를 클리어하고,\n유니크 컬러를 획득하츄!",
+                                               alertImage: "icon_onboardingMeetU",
+                                               okActionTitle: "퀘스트 확인하기",
+                                               okAction: okAction,
+                                               cancelActionTitle: "건너뛰기",
+                                               cancelAction: cancelAction))
+               
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func fetchMyCards() {

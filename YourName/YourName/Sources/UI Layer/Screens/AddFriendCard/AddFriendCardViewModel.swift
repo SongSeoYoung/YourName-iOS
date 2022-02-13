@@ -34,7 +34,7 @@ final class AddFriendCardViewModel {
     let isLoading = PublishRelay<Bool>()
     let addFriendCardResult = PublishRelay<FriendCardState>()
     let toastView = PublishRelay<ToastView>()
-    let alertController = PublishRelay<AlertViewController>()
+    let alertController = PublishRelay<AlertViewController1>()
     let navigation = PublishRelay<AddFriendCardNavigation>()
     let popViewController = PublishRelay<Void>()
     
@@ -174,10 +174,10 @@ extension AddFriendCardViewModel {
                     .asObservable()
                     .mapToVoid()
             }
-            .compactMap { [weak self] _ -> AlertViewController? in
+            .compactMap { [weak self] _ -> AlertViewController1? in
                 guard let self = self else { return nil }
                 
-                let alertController = AlertViewController.instantiate()
+                let alertController = AlertViewController1.instantiate()
                 
                 let cardDetailAction = { [weak self] in
                     guard let self = self,

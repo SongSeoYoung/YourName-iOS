@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="GzV-lN-fg7">
+            <objects>
+                <viewController id="vKn-9P-Ny8" customClass="AlertViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wTf-ZK-AG5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11J-ai-i6c">
+                                <rect key="frame" x="26" y="133" width="323" height="401"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구 미츄 추가완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-3i-xPC">
+                                        <rect key="frame" x="92" y="37" width="139" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" name="black1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미츄를 추가할 도감을 선택하시겠츄?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifZ-9O-ROY">
+                                        <rect key="frame" x="20" y="70" width="283" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fdn-cs-BYQ">
+                                        <rect key="frame" x="56" y="127" width="211" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="211" id="AX9-et-p2T"/>
+                                            <constraint firstAttribute="height" constant="120" id="Q8H-Uf-FnO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-D4-FtG">
+                                        <rect key="frame" x="16" y="268" width="291" height="56"/>
+                                        <color key="backgroundColor" name="black1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="xoj-9X-tzg"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="도감 선택하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7o-da-thP">
+                                        <rect key="frame" x="16" y="324" width="291" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="etJ-F5-xXd"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="건너뛰기">
+                                            <color key="titleColor" name="gray2"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="s7o-da-thP" firstAttribute="leading" secondItem="11J-ai-i6c" secondAttribute="leading" constant="16" id="32l-pM-Ze0"/>
+                                    <constraint firstItem="ifZ-9O-ROY" firstAttribute="top" secondItem="hna-3i-xPC" secondAttribute="bottom" constant="12" id="7pU-z9-bo9"/>
+                                    <constraint firstAttribute="trailing" secondItem="ifZ-9O-ROY" secondAttribute="trailing" constant="20" id="CwH-XZ-wCc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fdn-cs-BYQ" secondAttribute="trailing" constant="56" id="Dzn-wy-tBX"/>
+                                    <constraint firstAttribute="trailing" secondItem="aQ1-D4-FtG" secondAttribute="trailing" constant="16" id="MUs-mK-hFK"/>
+                                    <constraint firstAttribute="width" constant="323" id="VhL-cW-NUg"/>
+                                    <constraint firstItem="ifZ-9O-ROY" firstAttribute="leading" secondItem="11J-ai-i6c" secondAttribute="leading" constant="20" id="Y4X-6G-fvw"/>
+                                    <constraint firstAttribute="height" constant="401" id="a30-Bv-bZn"/>
+                                    <constraint firstItem="aQ1-D4-FtG" firstAttribute="leading" secondItem="11J-ai-i6c" secondAttribute="leading" constant="16" id="cOT-39-5iX"/>
+                                    <constraint firstItem="Fdn-cs-BYQ" firstAttribute="centerX" secondItem="11J-ai-i6c" secondAttribute="centerX" id="d0f-86-sNx"/>
+                                    <constraint firstItem="hna-3i-xPC" firstAttribute="centerX" secondItem="11J-ai-i6c" secondAttribute="centerX" id="eBi-yQ-Hwd"/>
+                                    <constraint firstItem="hna-3i-xPC" firstAttribute="top" secondItem="11J-ai-i6c" secondAttribute="top" constant="37" id="i08-vk-Opr"/>
+                                    <constraint firstAttribute="bottom" secondItem="aQ1-D4-FtG" secondAttribute="bottom" constant="77" id="iNB-Lm-jbg"/>
+                                    <constraint firstItem="Fdn-cs-BYQ" firstAttribute="leading" secondItem="11J-ai-i6c" secondAttribute="leading" constant="56" id="pW9-5e-Vfh"/>
+                                    <constraint firstAttribute="trailing" secondItem="s7o-da-thP" secondAttribute="trailing" constant="16" id="qOr-B4-09G"/>
+                                    <constraint firstAttribute="bottom" secondItem="s7o-da-thP" secondAttribute="bottom" constant="21" id="qta-Rn-baD"/>
+                                    <constraint firstItem="aQ1-D4-FtG" firstAttribute="top" secondItem="Fdn-cs-BYQ" secondAttribute="bottom" constant="21" id="y13-Zh-dGJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sGo-U9-BIJ"/>
+                        <color key="backgroundColor" name="gray60"/>
+                        <constraints>
+                            <constraint firstItem="11J-ai-i6c" firstAttribute="centerX" secondItem="wTf-ZK-AG5" secondAttribute="centerX" id="1k1-ix-huO"/>
+                            <constraint firstItem="11J-ai-i6c" firstAttribute="centerY" secondItem="wTf-ZK-AG5" secondAttribute="centerY" id="3XZ-Vx-HVg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertDescLabel" destination="ifZ-9O-ROY" id="7bq-hn-Dbw"/>
+                        <outlet property="alertImage" destination="Fdn-cs-BYQ" id="nqE-t5-nD0"/>
+                        <outlet property="alertTitleLabel" destination="hna-3i-xPC" id="6nG-VW-gtK"/>
+                        <outlet property="cancelActionButton" destination="s7o-da-thP" id="xPd-fy-rdI"/>
+                        <outlet property="okActionButton" destination="aQ1-D4-FtG" id="oH2-YD-Kc0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="205"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray60">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

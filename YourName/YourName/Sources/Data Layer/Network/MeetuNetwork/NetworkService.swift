@@ -52,7 +52,6 @@ final class NetworkService: NetworkServing {
                             .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>>in
                                 self?.accessToken = nil
                                 self?.refreshToken = nil
-                                print("referech error")
 //                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
 //                                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
                                 return .empty()
@@ -71,9 +70,6 @@ final class NetworkService: NetworkServing {
         let endpoint = MultiTarget.target(api)
         
         return self.provider.rx.request(endpoint)
-            .do(onNext: { [weak self] _ in
-                print("hear", self?.headers)
-            })
             .asObservable()
             .map(MeetuResponse<API.Response>.self)
             .map { response -> MeetuResponse<API.Response> in
