@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Card Detail View Controller-->
+        <scene sceneID="GzV-lN-fg7">
+            <objects>
+                <viewController id="vKn-9P-Ny8" customClass="CardDetailViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i8c-w6-sVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPQ-hz-bOe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fyj-uT-AVW">
+                                        <rect key="frame" x="135.5" y="4" width="104" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDI-fU-PXM">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="XkO-o9-Xd0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="앞면">
+                                                    <color key="titleColor" name="black1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxU-7Z-XVb">
+                                                <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="kNZ-eF-eqQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="뒷면">
+                                                    <color key="titleColor" name="black1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="CWB-Lg-hXB"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-SS-LSt">
+                                        <rect key="frame" x="24" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Xmk-np-Oby"/>
+                                            <constraint firstAttribute="height" constant="48" id="igj-7F-sFA"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrow_left_back"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFj-Cg-DCp">
+                                        <rect key="frame" x="303" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="gAe-WC-oCz"/>
+                                            <constraint firstAttribute="height" constant="48" id="jwb-kU-4L6"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="btn_more"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-Qc-gC3">
+                                        <rect key="frame" x="135.5" y="42" width="48" height="3"/>
+                                        <color key="backgroundColor" name="black1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="SRd-xa-MOb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GBf-SS-LSt" firstAttribute="centerY" secondItem="IPQ-hz-bOe" secondAttribute="centerY" id="3qg-5h-Vru"/>
+                                    <constraint firstAttribute="trailing" secondItem="IFj-Cg-DCp" secondAttribute="trailing" constant="24" id="OHX-DR-SqO"/>
+                                    <constraint firstItem="VIc-Qc-gC3" firstAttribute="bottom" secondItem="Fyj-uT-AVW" secondAttribute="bottom" constant="-7" id="RJ6-BA-giV"/>
+                                    <constraint firstItem="VIc-Qc-gC3" firstAttribute="trailing" secondItem="ZDI-fU-PXM" secondAttribute="trailing" id="S64-bx-0Hg"/>
+                                    <constraint firstItem="Fyj-uT-AVW" firstAttribute="centerY" secondItem="IPQ-hz-bOe" secondAttribute="centerY" id="STc-Yq-DLA"/>
+                                    <constraint firstItem="VIc-Qc-gC3" firstAttribute="leading" secondItem="ZDI-fU-PXM" secondAttribute="leading" id="bY6-MN-ZcL"/>
+                                    <constraint firstItem="IFj-Cg-DCp" firstAttribute="centerY" secondItem="IPQ-hz-bOe" secondAttribute="centerY" id="gRR-0J-o70"/>
+                                    <constraint firstItem="GBf-SS-LSt" firstAttribute="leading" secondItem="IPQ-hz-bOe" secondAttribute="leading" constant="24" id="oNH-Nd-ZNH"/>
+                                    <constraint firstItem="Fyj-uT-AVW" firstAttribute="centerX" secondItem="IPQ-hz-bOe" secondAttribute="centerX" id="ooM-CQ-ZI2"/>
+                                    <constraint firstAttribute="height" constant="56" id="q0I-md-FUm"/>
+                                </constraints>
+                            </view>
+                            <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZyD-X1-eFj">
+                                <rect key="frame" x="0.0" y="56" width="375" height="611"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kt8-Ev-678" customClass="BackCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhh-FZ-1mV" customClass="FrontCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qzi-ok-0QM"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZyD-X1-eFj" firstAttribute="leading" secondItem="Qzi-ok-0QM" secondAttribute="leading" id="AXB-L9-rqx"/>
+                            <constraint firstItem="ZyD-X1-eFj" firstAttribute="top" secondItem="IPQ-hz-bOe" secondAttribute="bottom" id="LGj-PP-67u"/>
+                            <constraint firstItem="Qzi-ok-0QM" firstAttribute="trailing" secondItem="ZyD-X1-eFj" secondAttribute="trailing" id="MS4-ie-DX6"/>
+                            <constraint firstItem="Qzi-ok-0QM" firstAttribute="bottom" secondItem="ZyD-X1-eFj" secondAttribute="bottom" id="Wah-cU-3K2"/>
+                            <constraint firstItem="Qzi-ok-0QM" firstAttribute="trailing" secondItem="IPQ-hz-bOe" secondAttribute="trailing" id="l9X-e9-FgR"/>
+                            <constraint firstItem="IPQ-hz-bOe" firstAttribute="top" secondItem="Qzi-ok-0QM" secondAttribute="top" id="tjm-dw-VRA"/>
+                            <constraint firstItem="IPQ-hz-bOe" firstAttribute="leading" secondItem="Qzi-ok-0QM" secondAttribute="leading" id="wMc-Qy-kIE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="zxU-7Z-XVb" id="fDs-gn-1Ib"/>
+                        <outlet property="backViewButton" destination="zxU-7Z-XVb" id="zeL-bL-uh8"/>
+                        <outlet property="cardBackView" destination="kt8-Ev-678" id="HbA-mX-jYx"/>
+                        <outlet property="cardFrontView" destination="Uhh-FZ-1mV" id="VeV-bh-NnT"/>
+                        <outlet property="frontViewButton" destination="ZDI-fU-PXM" id="V3u-ya-KKv"/>
+                        <outlet property="moreButton" destination="IFj-Cg-DCp" id="FvQ-2O-vRZ"/>
+                        <outlet property="underLineLeading" destination="bY6-MN-ZcL" id="dhx-tP-frd"/>
+                        <outlet property="underLineTrailing" destination="S64-bx-0Hg" id="doi-zL-sNp"/>
+                        <outlet property="underLineView" destination="VIc-Qc-gC3" id="WMD-cM-1vD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="205"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow_left_back" width="24" height="24"/>
+        <image name="btn_more" width="24" height="24"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

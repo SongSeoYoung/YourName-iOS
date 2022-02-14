@@ -59,6 +59,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
+        // TODO
         self.rx.viewWillAppear
             .flatMapFirst { [weak self] _ -> Observable<NameCardDetailViewModel.CardType?> in
                 guard let self = self else { return .empty() }

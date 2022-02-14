@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNt-qY-d1c" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yzT-y3-8bS">
                                         <rect key="frame" x="148.5" y="8.5" width="117" height="31"/>
@@ -80,7 +78,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkS-4s-anS">
-                                <rect key="frame" x="0.0" y="92" width="414" height="2208"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="2252"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-gH-rYR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
@@ -356,7 +354,7 @@
                         <outlet property="cardDetailBackView" destination="CGN-OQ-g2x" id="2e6-YS-S4U"/>
                         <outlet property="cardDetailFrontView" destination="4J3-By-pxc" id="v1D-bW-lPa"/>
                         <outlet property="detailMoreButton" destination="Ar2-X3-D4l" id="D2H-a4-pH8"/>
-                        <outlet property="frontButton" destination="WWP-Oe-lP8" id="pAu-pT-ynM"/>
+                        <outlet property="frontViewButton" destination="WWP-Oe-lP8" id="pAu-pT-ynM"/>
                         <outlet property="mainView" destination="dkS-4s-anS" id="acg-Pu-N9a"/>
                         <outlet property="mySkillProgressView1" destination="9Kt-0D-WGW" id="cN8-qd-4NW"/>
                         <outlet property="mySkillProgressView2" destination="OQp-Vq-Fl0" id="huZ-0l-25U"/>
