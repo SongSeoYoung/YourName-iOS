@@ -18,12 +18,15 @@ final class CardDetailComponent: Component<CardDetailDependency> {
     var uniqueCode: BehaviorRelay<UniqueCode> { dependency.uniqueCode }
     var cardId: BehaviorRelay<Identifier> { dependency.cardId }
     fileprivate var cardRepository: CardRepository
+    fileprivate var clipboardService: ClipboardService
     
     init(
         dependency: CardDetailDependency,
-        cardRepository: CardRepository
+        cardRepository: CardRepository = YourNameCardRepository(),
+        clipboardService: ClipboardService = YourNameClipboardService()
     ) {
         self.cardRepository = cardRepository
+        self.clipboardService = clipboardService
         super.init(dependency: dependency)
     }
 }
@@ -41,17 +44,14 @@ final class CardDetailBuilder: Builder<CardDetailDependency>, CardDetailBuildabl
     }
 
     func build(withListener listener: CardDetailListener) -> CardDetailRouting {
-        let cardRepository = YourNameCardRepository()
-        let component = CardDetailComponent(
-            dependency: dependency,
-            cardRepository: cardRepository
-        )
+        let component = CardDetailComponent(dependency: dependency)
         let viewController = CardDetailViewController.instantiate()
         let interactor = CardDetailInteractor(
             presenter: viewController,
             cardRepository: component.cardRepository,
             uniqueCode: component.uniqueCode,
-            cardId: component.cardId
+            cardId: component.cardId,
+            clipboardService: component.clipboardService
         )
         interactor.listener = listener
         return CardDetailRouter(

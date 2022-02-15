@@ -16,36 +16,13 @@ protocol CardDetailPresentableListener: AnyObject {
     func didTapCardFront()
     func didTapCardBack()
     func fetch()
+    func didTapUniqueCode(_ code: UniqueCode)
 }
 
 final class CardDetailViewController: UIViewController,
                                       CardDetailPresentable,
                                       CardDetailViewControllable,
                                       Storyboarded{
-    
-    // MARK: Presentable
-    func setup(_ bgColor: ColorSource) {
-        self.view.layoutIfNeeded()
-        self.view.setColorSource(bgColor)
-    }
-    
-    func setup(_ card: CardState) {
-        switch card {
-        case .front(let viewModel):
-            self.cardFrontView?.isHidden = false
-            self.cardBackView?.isHidden = true
-            self.view.layoutIfNeeded()
-            self.cardFrontView?.configure(with: viewModel)
-            if let frontCardButton = self.frontViewButton { self.highlight(frontCardButton) }
-        case .back(let viewModel):
-            self.cardFrontView?.isHidden = true
-            self.cardBackView?.isHidden = false
-            self.view.layoutIfNeeded()
-            self.cardBackView?.configure(with: viewModel)
-            if let backCardButton = self.backViewButton { self.highlight(backCardButton) }
-        }
-    }
-    
     
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var moreButton: UIButton!
@@ -70,6 +47,41 @@ final class CardDetailViewController: UIViewController,
         super.viewDidLoad()
         self.listener?.fetch()
         self.bind()
+        self.configure()
+    }
+    
+    // MARK: Presentable
+    func setup(_ bgColor: ColorSource) {
+        self.view.layoutIfNeeded()
+        self.view.setColorSource(bgColor)
+    }
+    
+    func setup(_ card: CardState) {
+        switch card {
+        case .front(let viewModel):
+            self.cardFrontView?.isHidden = false
+            self.cardBackView?.isHidden = true
+            self.view.layoutIfNeeded()
+            self.cardFrontView?.configure(with: viewModel)
+            if let frontCardButton = self.frontViewButton { self.highlight(frontCardButton) }
+        case .back(let viewModel):
+            self.cardFrontView?.isHidden = true
+            self.cardBackView?.isHidden = false
+            self.view.layoutIfNeeded()
+            self.cardBackView?.configure(with: viewModel)
+            if let backCardButton = self.backViewButton { self.highlight(backCardButton) }
+        }
+    }
+    
+    func toast(_ view: ToastView) {
+        self.view.showToast(view)
+    }
+    
+    
+    // MARK: Private
+    
+    private func configure() {
+        self.cardFrontView.delegate = self
     }
     
     private func bind() {
@@ -112,5 +124,14 @@ final class CardDetailViewController: UIViewController,
         
         self.underLineLeading?.isActive  = true
         self.underLineTrailing?.isActive = true
+    }
+}
+
+// MARK: - FrontCardDetailViewDelegate
+
+extension CardDetailViewController: FrontCardDetailViewDelegate {
+    func frontCardDetailView(_ frontCardDetailView: FrontCardDetailView,
+                             didTapCopy id: Identifier) {
+        self.listener?.didTapUniqueCode(id)
     }
 }

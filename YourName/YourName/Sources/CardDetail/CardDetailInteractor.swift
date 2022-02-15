@@ -20,6 +20,7 @@ protocol CardDetailPresentable: Presentable {
     var listener: CardDetailPresentableListener? { get set }
     func setup(_ bgColor: ColorSource)
     func setup(_ card: CardState)
+    func toast(_ view: ToastView)
 }
 
 protocol CardDetailListener: AnyObject {
@@ -46,16 +47,19 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
     private let disposeBag: DisposeBag
     private let bgColor: BehaviorRelay<ColorSource?>
     private let card: BehaviorRelay<Entity.NameCard?>
+    private let clipboardService: ClipboardService
     
     init(
         presenter: CardDetailPresentable,
         cardRepository: CardRepository,
         uniqueCode: BehaviorRelay<UniqueCode>,
-        cardId: BehaviorRelay<Identifier>
+        cardId: BehaviorRelay<Identifier>,
+        clipboardService: ClipboardService
     ) {
         self.cardId = cardId
         self.uniqueCode = uniqueCode
         self.cardRepository = cardRepository
+        self.clipboardService = clipboardService
         self.disposeBag = DisposeBag()
         self.bgColor = .init(value: nil)
         self.card = .init(value: nil)
@@ -95,6 +99,11 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
         guard let card = self.card.value else { return }
         guard let backCard = self.createBackCardDetailViewModel(card) else { return }
         self.presenter.setup(.back(backCard))
+    }
+    
+    func didTapUniqueCode(_ code: UniqueCode) {
+        self.clipboardService.copy(code)
+        self.presenter.toast(ToastView(text: "코드명이 복사되었츄!"))
     }
     
     func fetch() {
