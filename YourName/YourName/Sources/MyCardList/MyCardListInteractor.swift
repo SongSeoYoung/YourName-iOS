@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 protocol MyCardListRouting: ViewableRouting {
-    func attachMyCardDetail(cardCode: UniqueCode)
+    func attachMyCardDetail()
     func detachMyCardDetail()
     func attachCardCreation()
     func detachCardCreation()
@@ -33,22 +33,30 @@ protocol MyCardListListener: AnyObject {
 
 final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, MyCardListInteractable, MyCardListPresentableListener {
 
+    
+
     weak var router: MyCardListRouting?
     weak var listener: MyCardListListener?
     private let myCardRepository: MyCardRepository
     private let questRepository: QuestRepository
     private let disposeBag: DisposeBag
     private let alert: BehaviorRelay<AlertModel1?>
+    private let uniqueCode: BehaviorRelay<UniqueCode>
+    private let cardId: BehaviorRelay<Identifier>
 
     init(
         presenter: MyCardListPresentable,
         myCardRepository: MyCardRepository,
         questRepository: QuestRepository,
-        alert: BehaviorRelay<AlertModel1?>
+        alert: BehaviorRelay<AlertModel1?>,
+        uniqueCode: BehaviorRelay<UniqueCode>,
+        cardId: BehaviorRelay<Identifier>
     ) {
         self.myCardRepository = myCardRepository
         self.questRepository = questRepository
         self.alert = alert
+        self.uniqueCode = uniqueCode
+        self.cardId = cardId
         self.disposeBag = .init()
         super.init(presenter: presenter)
         presenter.listener = self
@@ -70,21 +78,29 @@ final class MyCardListInteractor: PresentableInteractor<MyCardListPresentable>, 
         self.router?.attachCardCreation()
     }
     func didTapMyCard(at indexPath: IndexPath) {
-        guard let code = self.presenter.myCards.value[safe: indexPath.item]?.uniqueCode else {
-            fatalError("cannot find card unique code at \(indexPath.item)")
+        guard let card = self.presenter.myCards.value[safe: indexPath.item] else {
+            fatalError("cannot find card at \(indexPath.item)")
         }
-        self.router?.attachMyCardDetail(cardCode: code)
+        self.uniqueCode.accept(card.uniqueCode)
+        self.cardId.accept(card.id)
+        self.router?.attachMyCardDetail()
+    }
+    
+    
+    // MARK: CardDetail Listener
+    func detachMyCardDetail() {
+        self.router?.detachMyCardDetail()
     }
     
     private func checkOnboarding() {
         self.questRepository.fetchAll()
-//            .filter { quests in
-//                let index = quests.firstIndex(where: { quest in
-//                    return quest.meta == .makeFirstNameCard
-//                }) ?? 0
-//                guard let quest = quests[safe: index] else { return false }
-//                return quest.status == .notAchieved
-//            }
+            .filter { quests in
+                let index = quests.firstIndex(where: { quest in
+                    return quest.meta == .makeFirstNameCard
+                }) ?? 0
+                guard let quest = quests[safe: index] else { return false }
+                return quest.status == .notAchieved
+            }
             .bind(onNext: { [weak self] _ in
                 let okAction = { [weak self] in
                     guard let self = self else { return }

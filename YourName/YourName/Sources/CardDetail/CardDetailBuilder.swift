@@ -6,16 +6,17 @@
 //
 
 import RIBs
+import RxRelay
 
 protocol CardDetailDependency: Dependency {
-    var uniqueCode: String { get }
-    var cardId: String { get }
+    var uniqueCode: BehaviorRelay<UniqueCode> { get }
+    var cardId: BehaviorRelay<Identifier> { get }
 }
 
 final class CardDetailComponent: Component<CardDetailDependency> {
 
-    var uniqueCode: String { dependency.uniqueCode }
-    var cardId: String { dependency.cardId }
+    var uniqueCode: BehaviorRelay<UniqueCode> { dependency.uniqueCode }
+    var cardId: BehaviorRelay<Identifier> { dependency.cardId }
     fileprivate var cardRepository: CardRepository
     
     init(
@@ -45,7 +46,7 @@ final class CardDetailBuilder: Builder<CardDetailDependency>, CardDetailBuildabl
             dependency: dependency,
             cardRepository: cardRepository
         )
-        let viewController = CardDetailViewController()
+        let viewController = CardDetailViewController.instantiate()
         let interactor = CardDetailInteractor(
             presenter: viewController,
             cardRepository: component.cardRepository,

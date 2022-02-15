@@ -10,7 +10,6 @@ import RxSwift
 import RxRelay
 
 protocol CardDetailRouting: ViewableRouting {
-    func detachCardDetail()
     func attachCardMore()
     func detachCardMore()
 }
@@ -24,7 +23,7 @@ protocol CardDetailPresentable: Presentable {
 }
 
 protocol CardDetailListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func detachMyCardDetail()
 }
 
 final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, CardDetailInteractable, CardDetailPresentableListener {
@@ -42,8 +41,8 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
     weak var listener: CardDetailListener?
     
     private let cardRepository: CardRepository
-    private let uniqueCode: UniqueCode
-    private let cardId: Identifier
+    private let uniqueCode: BehaviorRelay<UniqueCode>
+    private let cardId: BehaviorRelay<Identifier>
     private let disposeBag: DisposeBag
     private let bgColor: BehaviorRelay<ColorSource?>
     private let card: BehaviorRelay<Entity.NameCard?>
@@ -51,8 +50,8 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
     init(
         presenter: CardDetailPresentable,
         cardRepository: CardRepository,
-        uniqueCode: UniqueCode,
-        cardId: Identifier
+        uniqueCode: BehaviorRelay<UniqueCode>,
+        cardId: BehaviorRelay<Identifier>
     ) {
         self.cardId = cardId
         self.uniqueCode = uniqueCode
@@ -66,16 +65,16 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        print(" 👶 \(String(describing: self)): \(#function)")
     }
 
     override func willResignActive() {
         super.willResignActive()
-        // TODO: Pause any business logic.
+        print(" ☠️ \(String(describing: self)): \(#function)")
     }
     
     func detachCardDetail() {
-        self.router?.detachCardDetail()
+        self.listener?.detachMyCardDetail()
     }
     
     func attachCardMore() {
@@ -99,15 +98,17 @@ final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, 
     }
     
     func fetch() {
-        self.cardRepository.fetchCard(uniqueCode: self.uniqueCode)
+        self.cardRepository.fetchCard(uniqueCode: self.uniqueCode.value)
             .map { $0.nameCard }
             .filterNil()
             .bind(onNext: { [weak self] card in
-                guard let bgColor = ColorSource.from(card.bgColor?.value ?? []),
-                      let card = self?.createFrontCardDetailViewModel(card) else { return }
+                guard let bgColor = ColorSource.from(card.bgColor?.value ?? []) else { return }
+                                                     
+                self?.card.accept(card)
                 self?.bgColor.accept(bgColor)
                 self?.presenter.setup(bgColor)
-                self?.presenter.setup(.front(card))
+                guard let state = self?.createFrontCardDetailViewModel(card) else { return }
+                self?.presenter.setup(.front(state))
             })
             .disposed(by: self.disposeBag)
     }

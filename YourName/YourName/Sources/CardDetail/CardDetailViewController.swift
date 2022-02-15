@@ -18,7 +18,12 @@ protocol CardDetailPresentableListener: AnyObject {
     func fetch()
 }
 
-final class CardDetailViewController: UIViewController, CardDetailPresentable, CardDetailViewControllable {
+final class CardDetailViewController: UIViewController,
+                                      CardDetailPresentable,
+                                      CardDetailViewControllable,
+                                      Storyboarded{
+    
+    // MARK: Presentable
     func setup(_ bgColor: ColorSource) {
         self.view.layoutIfNeeded()
         self.view.setColorSource(bgColor)
@@ -82,25 +87,13 @@ final class CardDetailViewController: UIViewController, CardDetailPresentable, C
             })
             .disposed(by: self.disposeBag)
         
-        self.cardFrontView.rx.tapGesture()
-            .when(.recognized)
-            .throttle(
-                .milliseconds(400),
-                latest: false,
-                scheduler: MainScheduler.instance
-            )
+        self.frontViewButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in
                 self?.listener?.didTapCardFront()
             })
             .disposed(by: self.disposeBag)
         
-        self.cardBackView.rx.tapGesture()
-            .when(.recognized)
-            .throttle(
-                .milliseconds(400),
-                latest: false,
-                scheduler: MainScheduler.instance
-            )
+        self.backViewButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in
                 self?.listener?.didTapCardBack()
             })

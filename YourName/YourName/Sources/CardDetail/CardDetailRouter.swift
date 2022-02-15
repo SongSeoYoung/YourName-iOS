@@ -30,7 +30,4 @@ final class CardDetailRouter: ViewableRouter<CardDetailInteractable, CardDetailV
     func detachCardMore() {
         print(#function)
     }
-    func detachCardDetail() {
-        print(#function)
-    }
 }

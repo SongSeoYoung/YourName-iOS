@@ -121,8 +121,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="zxU-7Z-XVb" id="fDs-gn-1Ib"/>
-                        <outlet property="backViewButton" destination="zxU-7Z-XVb" id="zeL-bL-uh8"/>
+                        <outlet property="backButton" destination="GBf-SS-LSt" id="VWC-WI-vZA"/>
+                        <outlet property="backViewButton" destination="zxU-7Z-XVb" id="CdB-x2-5Z4"/>
                         <outlet property="cardBackView" destination="kt8-Ev-678" id="HbA-mX-jYx"/>
                         <outlet property="cardFrontView" destination="Uhh-FZ-1mV" id="VeV-bh-NnT"/>
                         <outlet property="frontViewButton" destination="ZDI-fU-PXM" id="V3u-ya-KKv"/>

@@ -18,17 +18,11 @@ extension ViewControllable {
         self.uiviewController.present(viewControllerToPresent.uiviewController, animated: animated, completion: completion)
     }
     
-    func dismiss(
-        animated: Bool,
-        compleition: (() -> Void)? = nil
-    ) {
+    func dismiss(animated: Bool, compleition: (() -> Void)? = nil) {
         self.uiviewController.dismiss(animated: animated, completion: compleition)
     }
     
-    func push(
-        viewController: ViewControllable,
-        animated: Bool
-    ) {
+    func push(viewController: ViewControllable,animated: Bool) {
         self.uiviewController.navigationController?.pushViewController(viewController.uiviewController, animated: animated)
     }
     
