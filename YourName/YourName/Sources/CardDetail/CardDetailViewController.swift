@@ -74,7 +74,7 @@ final class CardDetailViewController: UIViewController,
     }
     
     func toast(_ view: ToastView) {
-        self.view.showToast(view)
+        self.view.showToast(view, position: .top)
     }
     
     
