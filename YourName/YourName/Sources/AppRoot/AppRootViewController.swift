@@ -21,7 +21,12 @@ final class AppRootViewController: UITabBarController, AppRootPresentable, AppRo
     }
     
     func setupViewControllers(_ viewControllers: (vc: ViewControllable, type: HomeTab)...) {
-        super.setViewControllers(viewControllers.map(\.vc.uiviewController), animated: true)
+        let _viewControllers = viewControllers.map { vc, _ -> UINavigationController in
+            let nav = UINavigationController(rootViewController: vc.uiviewController)
+            nav.navigationBar.isHidden = true
+            return nav
+        }
+        super.setViewControllers(_viewControllers, animated: true)
         viewControllers.forEach { vc, type in
             vc.uiviewController.tabBarItem = UITabBarItem(
                 title: type.description,

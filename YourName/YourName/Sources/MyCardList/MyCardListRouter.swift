@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol MyCardListInteractable: Interactable, AlertListener {
+protocol MyCardListInteractable: Interactable, AlertListener, CardDetailListener {
     var router: MyCardListRouting? { get set }
     var listener: MyCardListListener? { get set }
 }
@@ -21,12 +21,17 @@ final class MyCardListRouter: ViewableRouter<MyCardListInteractable, MyCardListV
     private let alertBuildable: AlertBuildable
     private var alertRouting: AlertRouting?
     
+    private let cardDetailBuildable: CardDetailBuildable
+    private var cardDetailRouting: CardDetailRouting?
+    
     init(
         interactor: MyCardListInteractable,
         viewController: MyCardListViewControllable,
-        alertBuildable: AlertBuildable
+        alertBuildable: AlertBuildable,
+        cardDetailBuildable: CardDetailBuildable
     ) {
         self.alertBuildable = alertBuildable
+        self.cardDetailBuildable = cardDetailBuildable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -39,11 +44,21 @@ final class MyCardListRouter: ViewableRouter<MyCardListInteractable, MyCardListV
         print(#function)
     }
     
-    func attachMyCardDetail(cardCode: UniqueCode) {
-        print(#function)
+    func attachMyCardDetail() {
+        if self.cardDetailRouting != nil { return }
+        
+        let router = self.cardDetailBuildable.build(withListener: self.interactor)
+        self.attachChild(router)
+        self.cardDetailRouting = router
+        self.viewControllable.push(viewController: router.viewControllable, animated: true)
+
     }
     func detachMyCardDetail() {
-        print(#function)
+        if let router = self.cardDetailRouting {
+            self.viewControllable.pop(animated: true)
+            self.detachChild(router)
+            self.cardDetailRouting = nil
+        }
     }
     
     func attachQuest() {

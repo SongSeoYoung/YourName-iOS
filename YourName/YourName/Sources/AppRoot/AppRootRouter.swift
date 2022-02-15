@@ -24,9 +24,6 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOutRouter: LoggedOutRouting?
     
-    private let loggedOutBuilder: LoggedOutBuildable
-    private var loggedOutRouter: LoggedOutRouting?
-    
     private let myCardListBuilder: MyCardListBuildable
     private var myCardListRouter: MyCardListRouting?
     
