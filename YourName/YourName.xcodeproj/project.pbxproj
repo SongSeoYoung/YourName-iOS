@@ -92,10 +92,11 @@
 		A2CBF55E27BA8A1600D31CE4 /* CardDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF55927BA8A1600D31CE4 /* CardDetailBuilder.swift */; };
 		A2CBF55F27BA8A1600D31CE4 /* CardDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF55A27BA8A1600D31CE4 /* CardDetailInteractor.swift */; };
 		A2CBF58627BE852600D31CE4 /* CardMoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */; };
-		A2CBF58727BE852600D31CE4 /* CardMoreViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF58227BE852600D31CE4 /* CardMoreViewController.storyboard */; };
 		A2CBF58827BE852600D31CE4 /* CardMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */; };
 		A2CBF58927BE852600D31CE4 /* CardMoreBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */; };
 		A2CBF58A27BE852600D31CE4 /* CardMoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */; };
+		A2CBF58C27BE85BC00D31CE4 /* CardMoreContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */; };
+		A2CBF58E27BE864100D31CE4 /* CardMoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
@@ -448,10 +449,11 @@
 		A2CBF55927BA8A1600D31CE4 /* CardDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailBuilder.swift; sourceTree = "<group>"; };
 		A2CBF55A27BA8A1600D31CE4 /* CardDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailInteractor.swift; sourceTree = "<group>"; };
 		A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreRouter.swift; sourceTree = "<group>"; };
-		A2CBF58227BE852600D31CE4 /* CardMoreViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardMoreViewController.storyboard; sourceTree = "<group>"; };
 		A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreViewController.swift; sourceTree = "<group>"; };
 		A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreBuilder.swift; sourceTree = "<group>"; };
 		A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreInteractor.swift; sourceTree = "<group>"; };
+		A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardMoreContentView.xib; sourceTree = "<group>"; };
+		A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreContentView.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
@@ -894,10 +896,11 @@
 			isa = PBXGroup;
 			children = (
 				A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */,
-				A2CBF58227BE852600D31CE4 /* CardMoreViewController.storyboard */,
 				A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */,
 				A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */,
 				A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */,
+				A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */,
+				A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */,
 			);
 			path = CardMore;
 			sourceTree = "<group>";
@@ -1888,6 +1891,7 @@
 				CE2D1C5E275E88F800DCD2D3 /* NameCardDetailViewController.storyboard in Resources */,
 				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
+				A2CBF58C27BE85BC00D31CE4 /* CardMoreContentView.xib in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				A23920FB273692DD0069E418 /* AddFriendCardResultView.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
@@ -1906,7 +1910,6 @@
 				A223E6D02755277E00F29FCE /* CardDetailMoreView.xib in Resources */,
 				649ABC28275108A9005F50E8 /* CardDetailViewController1.storyboard in Resources */,
 				CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */,
-				A2CBF58727BE852600D31CE4 /* CardMoreViewController.storyboard in Resources */,
 				CE2D1C67275E8BFB00DCD2D3 /* FrontCardDetailView.xib in Resources */,
 				A2CBF4FB27B7B37B00D31CE4 /* SplashViewController.storyboard in Resources */,
 				CE2D1C69275E8DC100DCD2D3 /* BackCardDetailView.xib in Resources */,
@@ -2265,6 +2268,7 @@
 				A2CBF58627BE852600D31CE4 /* CardMoreRouter.swift in Sources */,
 				A2CBF50A27B7BB4A00D31CE4 /* LoggedOutBuilder.swift in Sources */,
 				A2DA3B7A2753685B00E68F23 /* AddFriendCardAPI.swift in Sources */,
+				A2CBF58E27BE864100D31CE4 /* CardMoreContentView.swift in Sources */,
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
 				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
 				A2DA3B6F27514F4D00E68F23 /* Entity.FriendCard.swift in Sources */,

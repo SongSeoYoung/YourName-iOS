@@ -9,7 +9,6 @@ import RIBs
 import RxSwift
 
 protocol CardMoreRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
 protocol CardMorePresentable: Presentable {
@@ -18,7 +17,10 @@ protocol CardMorePresentable: Presentable {
 }
 
 protocol CardMoreListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func detachCardMore()
+    func didTapDelete()
+    func didTapEdit()
+    func didTapSaveImage()
 }
 
 final class CardMoreInteractor: PresentableInteractor<CardMorePresentable>, CardMoreInteractable, CardMorePresentableListener {
@@ -41,5 +43,20 @@ final class CardMoreInteractor: PresentableInteractor<CardMorePresentable>, Card
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func didTapSaveImage() {
+        self.listener?.detachCardMore()
+        self.listener?.didTapSaveImage()
+    }
+    
+    func didTapDelete() {
+        self.listener?.detachCardMore()
+        self.listener?.didTapDelete()
+    }
+    
+    func didTapEidt() {
+        self.listener?.detachCardMore()
+        self.listener?.didTapEdit()
     }
 }
