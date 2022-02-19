@@ -12,10 +12,10 @@ extension UIView {
         views.forEach(addSubview(_:))
     }
     
-    class func fromNib() -> UIView? {
+    class func fromNib() -> UIView {
         let nibName = String(describing: self)
         let views = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)
-        return views?.first as? UIView
+        return views?.first as? UIView ?? UIView(frame: .zero)
     }
     
     private func removeGradientLayer(name: String) {

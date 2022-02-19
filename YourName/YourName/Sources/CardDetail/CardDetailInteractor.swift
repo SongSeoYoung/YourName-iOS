@@ -29,6 +29,22 @@ protocol CardDetailListener: AnyObject {
 
 final class CardDetailInteractor: PresentableInteractor<CardDetailPresentable>, CardDetailInteractable, CardDetailPresentableListener {
     
+    // card more listener
+    func didTapDelete() {
+        print(#function)
+        // alert rib붙이기
+    }
+    
+    func didTapEdit() {
+        print(#function)
+        // card creation으로 가야됨
+    }
+    
+    func didTapSaveImage() {
+        print(#function)
+        // activity controller RIB
+    }
+    
     enum State {
         case front(FrontCardDetailViewModel)
         case back(BackCardDetailViewModel)

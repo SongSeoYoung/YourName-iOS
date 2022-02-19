@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import RIBs
 
 protocol PageSheetContentView: UIView {
     var parent: ViewController? { get set }
@@ -19,7 +20,7 @@ extension PageSheetContentView {
     var onComplete: (() -> Void)? { nil }
 }
 
-final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
+final class PageSheetController<ContentView: PageSheetContentView>: ViewController, ViewControllable {
     let contentView: ContentView
     var onDismiss: ((ContentView) -> Void)?
     
@@ -71,7 +72,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
             })
         } else {
             self.dismiss(animated: true, completion: {
-                self.onDismiss?(self.contentView)
+//                self.onDismiss?(self.contentView)
                 self.contentView.parent = nil
             })
         }

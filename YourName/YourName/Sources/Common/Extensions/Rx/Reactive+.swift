@@ -12,7 +12,14 @@ import RxGesture
 
 extension Reactive where Base: View {
     var tapWhenRecognized: ControlEvent<Void> {
-        let source = tapGesture().when(.recognized).mapToVoid()
+        let source = tapGesture()
+            .when(.recognized)
+            .mapToVoid()
+            .throttle(
+                .milliseconds(400),
+                latest: false,
+                scheduler: MainScheduler.instance
+            )
         return ControlEvent(events: source)
     }
 }

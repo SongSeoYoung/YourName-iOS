@@ -13,7 +13,7 @@ protocol CardDetailDependency: Dependency {
     var cardId: BehaviorRelay<Identifier> { get }
 }
 
-final class CardDetailComponent: Component<CardDetailDependency> {
+final class CardDetailComponent: Component<CardDetailDependency>, CardMoreDependency {
 
     var uniqueCode: BehaviorRelay<UniqueCode> { dependency.uniqueCode }
     var cardId: BehaviorRelay<Identifier> { dependency.cardId }
@@ -54,9 +54,14 @@ final class CardDetailBuilder: Builder<CardDetailDependency>, CardDetailBuildabl
             clipboardService: component.clipboardService
         )
         interactor.listener = listener
+        
+        
+        // child builder
+        let cardMoreBuilder = CardMoreBuilder(dependency: component)
         return CardDetailRouter(
             interactor: interactor,
-            viewController: viewController
+            viewController: viewController,
+            cardMoreBuildable: cardMoreBuilder
         )
     }
 }
