@@ -72,7 +72,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
             })
         } else {
             self.dismiss(animated: true, completion: {
-                self.onDismiss?(self.contentView)
+//                self.onDismiss?(self.contentView)
                 self.contentView.parent = nil
             })
         }

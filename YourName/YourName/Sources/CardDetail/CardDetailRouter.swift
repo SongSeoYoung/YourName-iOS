@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol CardDetailInteractable: Interactable {
+protocol CardDetailInteractable: Interactable, CardMoreListener {
     var router: CardDetailRouting? { get set }
     var listener: CardDetailListener? { get set }
 }
@@ -17,17 +17,43 @@ protocol CardDetailViewControllable: ViewControllable {
 }
 
 final class CardDetailRouter: ViewableRouter<CardDetailInteractable, CardDetailViewControllable>, CardDetailRouting {
+    
+    private let cardMoreBuilder: CardMoreBuildable
+    private var cardMoreRouter: CardMoreRouting?
+    
+    private var pageSheetController: PageSheetController<CardMoreContentView>?
 
-    // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: CardDetailInteractable, viewController: CardDetailViewControllable) {
+    init(
+        interactor: CardDetailInteractable,
+        viewController: CardDetailViewControllable,
+        cardMoreBuildable: CardMoreBuildable
+    ) {
+        self.cardMoreBuilder = cardMoreBuildable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
     
     func attachCardMore() {
-        print(#function)
+        if self.cardMoreRouter != nil { return }
+        let router = self.cardMoreBuilder.build(withListener: self.interactor)
+        self.cardMoreRouter = router
+        self.attachChild(router)
+        guard let pageSheetContentView = router.viewControllable as? CardMoreContentView else { return }
+        
+        self.pageSheetController = PageSheetController<CardMoreContentView>.init(contentView: pageSheetContentView)
+        self.pageSheetController?.onDismiss = { [weak self] _ in
+            self?.detachCardMore()
+        }
+        self.pageSheetController?.show()
     }
+    
     func detachCardMore() {
-        print(#function)
+        self.pageSheetController?.close()
+        if let router = self.cardMoreRouter {
+            self.cardMoreRouter = nil
+           
+            self.pageSheetController = nil
+            self.detachChild(router)
+        }
     }
 }

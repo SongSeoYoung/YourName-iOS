@@ -92,7 +92,6 @@
 		A2CBF55E27BA8A1600D31CE4 /* CardDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF55927BA8A1600D31CE4 /* CardDetailBuilder.swift */; };
 		A2CBF55F27BA8A1600D31CE4 /* CardDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF55A27BA8A1600D31CE4 /* CardDetailInteractor.swift */; };
 		A2CBF58627BE852600D31CE4 /* CardMoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */; };
-		A2CBF58827BE852600D31CE4 /* CardMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */; };
 		A2CBF58927BE852600D31CE4 /* CardMoreBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */; };
 		A2CBF58A27BE852600D31CE4 /* CardMoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */; };
 		A2CBF58C27BE85BC00D31CE4 /* CardMoreContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */; };
@@ -449,7 +448,6 @@
 		A2CBF55927BA8A1600D31CE4 /* CardDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailBuilder.swift; sourceTree = "<group>"; };
 		A2CBF55A27BA8A1600D31CE4 /* CardDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailInteractor.swift; sourceTree = "<group>"; };
 		A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreRouter.swift; sourceTree = "<group>"; };
-		A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreViewController.swift; sourceTree = "<group>"; };
 		A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreBuilder.swift; sourceTree = "<group>"; };
 		A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreInteractor.swift; sourceTree = "<group>"; };
 		A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardMoreContentView.xib; sourceTree = "<group>"; };
@@ -896,7 +894,6 @@
 			isa = PBXGroup;
 			children = (
 				A2CBF58127BE852600D31CE4 /* CardMoreRouter.swift */,
-				A2CBF58327BE852600D31CE4 /* CardMoreViewController.swift */,
 				A2CBF58427BE852600D31CE4 /* CardMoreBuilder.swift */,
 				A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */,
 				A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */,
@@ -2098,7 +2095,6 @@
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
 				CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */,
-				A2CBF58827BE852600D31CE4 /* CardMoreViewController.swift in Sources */,
 				A2CBF58927BE852600D31CE4 /* CardMoreBuilder.swift in Sources */,
 				CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */,
 				CE94ABA3270ECF2E005D2E80 /* Interest.swift in Sources */,

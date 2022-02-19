@@ -18,10 +18,15 @@ protocol CardMorePresentableListener: AnyObject {
 final class CardMoreContentView: UIView,
                                  PageSheetContentView,
                                  CardMorePresentable,
-                                 NibLoadable {
+                                 NibLoadable,
+                                 CardMoreViewControllable {
+    var uiviewController: UIViewController {
+        UIViewController()  // fix
+    }
+    
     
     // page sheet content view
-    var parent: ViewController?
+    var parent: ViewController?   // RIB작업 후 지운다.
     var title: String { "" }
     var isModal: Bool { true }
     var onComplete: (() -> Void)? = nil
@@ -37,20 +42,13 @@ final class CardMoreContentView: UIView,
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupFromNib()
+        self.bind()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupFromNib()
-    }
-    
-    convenience init(
-        parent: ViewController,
-        onComplete: (() -> Void)? = nil
-    ) {
-        self.init(frame: .zero)
-        self.parent = parent
-        self.onComplete = onComplete
+        self.bind()
     }
     
     private func configureUI() {
@@ -75,13 +73,6 @@ final class CardMoreContentView: UIView,
         self.editView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 self?.listener?.didTapEidt()
-            })
-            .disposed(by: self.disposeBag)
-    }
-    private func render(_ viewModel: CardDetailMoreViewModel) {
-        viewModel.dismiss
-            .bind(onNext: { [weak self] in
-                self?.parent?.dismiss(animated: true)
             })
             .disposed(by: self.disposeBag)
     }

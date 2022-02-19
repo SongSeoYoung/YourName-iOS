@@ -31,9 +31,13 @@ final class CardMoreBuilder: Builder<CardMoreDependency>, CardMoreBuildable {
 
     func build(withListener listener: CardMoreListener) -> CardMoreRouting {
         let component = CardMoreComponent(dependency: dependency)
-        let viewController = CardMoreViewController()
-        let interactor = CardMoreInteractor(presenter: viewController)
+        let contentView = CardMoreContentView()
+        
+        let interactor = CardMoreInteractor(presenter: contentView)
         interactor.listener = listener
-        return CardMoreRouter(interactor: interactor, viewController: viewController)
+        return CardMoreRouter(
+            interactor: interactor,
+            viewController: contentView
+        )
     }
 }

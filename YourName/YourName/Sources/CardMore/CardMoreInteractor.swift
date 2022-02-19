@@ -37,12 +37,12 @@ final class CardMoreInteractor: PresentableInteractor<CardMorePresentable>, Card
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        print(" 👶 \(String(describing: self)): didBecomeActive()")
     }
 
     override func willResignActive() {
         super.willResignActive()
-        // TODO: Pause any business logic.
+        print(" ☠️ \(String(describing: self)): willResignActive()")
     }
     
     func didTapSaveImage() {
