@@ -50,10 +50,6 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         return CGSize(width: collectionView.bounds.width, height: height)
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     override func prepare() {
         super.prepare()
         
@@ -61,10 +57,20 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         self.cached = [[]]
         self.headerCached = []
         
+        var collectionViewWidth = collectionView.bounds.width
         var currentXOffset: CGFloat = .zero
         var yOffset: CGFloat = .zero
+        var bottomInset: CGFloat = .zero
         
         (0..<collectionView.numberOfSections).forEach { section in
+            // inset
+            guard let inset = self.delegate?.collectionView(collectionView, layout: self, insetForSectionAt: section) else { return }
+            yOffset += inset.top
+            bottomInset = inset.bottom
+            currentXOffset += inset.left
+            collectionViewWidth -= inset.right
+            
+            
             guard let headerSize = self.delegate?.collectionView(collectionView, layout: self, referenceSizeForHeaderInSection: section) else { return }
             let layoutAttributes = self.setupLayoutAttributes(
                 x: .zero,
@@ -72,7 +78,8 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
                 width: headerSize.width,
                 height: headerSize.height
             )
-            yOffset += headerSize
+            self.headerCached.append(layoutAttributes)
+            yOffset += headerSize.height
             
             (0..<collectionView.numberOfItems(inSection: section)).forEach { item in
                 let indexPath = IndexPath(item: item, section: section)
@@ -82,7 +89,7 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
                 
                 
                 ///. 다른 줄에 들어가는  상황
-                if currentXOffset + itemSize.width > collectionView.bounds.width {
+                if currentXOffset + itemSize.width > collectionViewWidth {
                     yOffset += (itemSize.height + lineSpacing)
                     currentXOffset = .zero
                 }
@@ -96,6 +103,7 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
                 currentXOffset += (itemSize.width + interitemSpacing)
             }
         }
+        yOffset += bottomInset
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
