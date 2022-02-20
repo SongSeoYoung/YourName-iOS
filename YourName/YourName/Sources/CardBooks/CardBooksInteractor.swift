@@ -22,7 +22,7 @@ protocol CardBooksPresentable: Presentable {
 protocol CardBooksListener: AnyObject {
 }
 
-final class CardBooksInteractor: PresentableInteractor<CardBooksPresentable>, CardBooksInteractable, CardBooksPresentableListener {
+final class CardBooksInteractor: PresentableInteractor<CardBooksPresentable>, CardBooksInteractable {
 
     weak var router: CardBooksRouting?
     weak var listener: CardBooksListener?
@@ -43,12 +43,12 @@ final class CardBooksInteractor: PresentableInteractor<CardBooksPresentable>, Ca
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        self.fetchCardBooks(self.cardBookRepository)
+        print(" 👶 \(String(describing: self)): \(#function)")
     }
 
     override func willResignActive() {
         super.willResignActive()
-        // TODO: Pause any business logic.
+        print(" ☠️ \(String(describing: self)): \(#function)")
     }
     
     private func fetchCardBooks(_ repository: CardBookRepository) {
@@ -64,20 +64,26 @@ final class CardBooksInteractor: PresentableInteractor<CardBooksPresentable>, Ca
 // MARK: - CardBooksPresentableListener
 
 extension CardBooksInteractor: CardBooksPresentableListener {
-    func numberOfRows(in section: Int) {
+    func numberOfRows(in section: Int) -> Int {
         self.cardBooks.value.count
     }
     func cellForRow(at indexPath: IndexPath) -> CardBook? {
         self.cardBooks.value[safe: indexPath.item]
     }
     func didSelectRow(at indexPath: IndexPath) {
-        guard let cardBook = self.cellForRow(at: indexPath) else { return }
+        guard let cardBook = self.cellForRow(at: indexPath),
+            let cardBookID = cardBook.id,
+              let cardBookTitle = cardBook.title else { return }
         self.router?.attachCardBookDetail(
-            cardBookID: cardBook.id,
-            cardBookTitle: cardBook.title
+            cardBookID: cardBookID,
+            cardBookTitle: cardBookTitle
         )
     }
     func didTapAddFriendCard() {
         self.router?.attachAddFriendCard()
+    }
+    
+    func viewDidLoad() {
+        self.fetchCardBooks(self.cardBookRepository)
     }
 }

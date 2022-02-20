@@ -14,19 +14,21 @@ protocol CardBooksPresentableListener: AnyObject {
     func cellForRow(at indexPath: IndexPath) -> CardBook?
     func didSelectRow(at indexPath: IndexPath)
     func didTapAddFriendCard()
+    func viewDidLoad()
 }
 
-final class CardBooksViewController: UIViewController, CardBooksViewControllable {
+final class CardBooksViewController: UIViewController, CardBooksViewControllable, Storyboarded {
 
     @IBOutlet private weak var cardBooksTableView: UITableView!
     @IBOutlet private weak var addFriendCardButton: UIButton!
     weak var listener: CardBooksPresentableListener?
-    private let dispoesBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.bind()
+        self.listener?.viewDidLoad()
     }
     
     private func setupUI() {
@@ -66,14 +68,14 @@ extension CardBooksViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        if self.listener?.numberOfRows(in: section) ?? 0 == 0 {
+        if self.listener?.numberOfRows(in: indexPath.section) ?? 0 == 0 {
             return self.emptyCell(at: indexPath)
         }
         return self.cardBookCell(at: indexPath)
     }
     
     private func cardBookCell(at indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.cardBookTableView?.dequeueReusableCell(CardBookCoverTableViewCell.self, for: indexPath) else { return UITableViewCell() }
+        guard let cell = self.cardBooksTableView?.dequeueReusableCell(CardBookCoverTableViewCell.self, for: indexPath) else { return UITableViewCell() }
         guard let cardBook = self.listener?.cellForRow(at: indexPath) else { return cell }
         
         cell.configure(with: cardBook)
@@ -81,7 +83,7 @@ extension CardBooksViewController: UITableViewDataSource {
     }
     
     private func emptyCell(at indexPath: IndexPath) -> UITableViewCell {
-        return self.cardBookTableView?.dequeueReusableCell(withIdentifier: "CardBookEmptyTableViewCell", for: indexPath) ?? UITableViewCell()
+        return self.cardBooksTableView?.dequeueReusableCell(withIdentifier: "CardBookEmptyTableViewCell", for: indexPath) ?? UITableViewCell()
     }
 }
 
