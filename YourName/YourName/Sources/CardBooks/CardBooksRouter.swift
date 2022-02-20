@@ -23,4 +23,12 @@ final class CardBooksRouter: ViewableRouter<CardBooksInteractable, CardBooksView
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
+    
+    func attachAddFriendCard() {
+        print(#function)
+    }
+    
+    func attachCardBookDetail(cardBookID: Identifier, cardBookTitle: String) {
+        print(#function)
+    }
 }
