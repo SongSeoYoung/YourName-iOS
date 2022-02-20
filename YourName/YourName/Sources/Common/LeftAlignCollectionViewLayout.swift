@@ -64,6 +64,7 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         
         (0..<collectionView.numberOfSections).forEach { section in
             // inset
+            print("🔖section", section)
             guard let inset = self.delegate?.collectionView(collectionView, layout: self, insetForSectionAt: section) else { return }
             yOffset += inset.top
             bottomInset = inset.bottom
@@ -72,7 +73,9 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
             
             
             guard let headerSize = self.delegate?.collectionView(collectionView, layout: self, referenceSizeForHeaderInSection: section) else { return }
-            let layoutAttributes = self.setupLayoutAttributes(
+            let layoutAttributes = self.setupLayoutAttributesForSupplementaryView(
+                kind: UICollectionView.elementKindSectionHeader,
+                with: IndexPath(item: 0, section: section),
                 x: .zero,
                 y: yOffset,
                 width: headerSize.width,
@@ -82,18 +85,21 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
             yOffset += headerSize.height
             
             (0..<collectionView.numberOfItems(inSection: section)).forEach { item in
+                print("🔖item", item)
                 let indexPath = IndexPath(item: item, section: section)
                 guard let itemSize = self.delegate?.collectionView(collectionView, layout: self, sizeForItemAt: indexPath),
                       let interitemSpacing = self.delegate?.collectionView(collectionView, layout: self, interitemSpacingForSectionAt: section),
                       let lineSpacing = self.delegate?.collectionView(collectionView, layout: self, lineSpacingForSectionAt: section) else { return }
-                
+                print("🔖current x", currentXOffset)
+                print("🔖yOffset", yOffset)
                 
                 ///. 다른 줄에 들어가는  상황
                 if currentXOffset + itemSize.width > collectionViewWidth {
                     yOffset += (itemSize.height + lineSpacing)
                     currentXOffset = .zero
                 }
-                let layoutAttributes = self.setupLayoutAttributes(
+                let layoutAttributes = self.setupLayoutAttributesForCell(
+                    at: indexPath,
                     x: currentXOffset,
                     y: yOffset,
                     width: itemSize.width,
@@ -131,13 +137,35 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         self.headerCached[safe: indexPath.section]
     }
     
-    private func setupLayoutAttributes(
+    private func setupLayoutAttributesForCell(
+        at indexPath: IndexPath,
         x: CGFloat,
         y: CGFloat,
         width: CGFloat,
         height: CGFloat
     ) -> UICollectionViewLayoutAttributes {
-        let layoutAttributes = UICollectionViewLayoutAttributes()
+        let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        layoutAttributes.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        )
+        return layoutAttributes
+    }
+    
+    private func setupLayoutAttributesForSupplementaryView(
+        kind: String,
+        with indexPath: IndexPath,
+        x: CGFloat,
+        y: CGFloat,
+        width: CGFloat,
+        height: CGFloat
+    ) -> UICollectionViewLayoutAttributes {
+        let layoutAttributes = UICollectionViewLayoutAttributes(
+            forSupplementaryViewOfKind: kind,
+            with: indexPath
+        )
         layoutAttributes.frame = CGRect(
             x: x,
             y: y,
