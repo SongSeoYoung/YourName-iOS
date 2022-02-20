@@ -96,6 +96,7 @@
 		A2CBF58A27BE852600D31CE4 /* CardMoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */; };
 		A2CBF58C27BE85BC00D31CE4 /* CardMoreContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */; };
 		A2CBF58E27BE864100D31CE4 /* CardMoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */; };
+		A2CBF5DE27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF5DD27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
@@ -452,6 +453,7 @@
 		A2CBF58527BE852600D31CE4 /* CardMoreInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreInteractor.swift; sourceTree = "<group>"; };
 		A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardMoreContentView.xib; sourceTree = "<group>"; };
 		A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreContentView.swift; sourceTree = "<group>"; };
+		A2CBF5DD27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
@@ -1429,6 +1431,7 @@
 				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
 				CE6BAB922704D08D0006D26B /* Protocols */,
 				CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */,
+				A2CBF5DD27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2243,6 +2246,7 @@
 				A2CBF55F27BA8A1600D31CE4 /* CardDetailInteractor.swift in Sources */,
 				CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
+				A2CBF5DE27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController1.swift in Sources */,
 				CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */,
 				CEDA4B94275138350011D0CA /* QuestWaitingDoneAPI.swift in Sources */,
