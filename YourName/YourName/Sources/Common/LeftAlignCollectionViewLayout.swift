@@ -41,6 +41,7 @@ protocol LeftAlignCollectionViewLayoutDelegate: AnyObject {
 final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
     
     private var cached: [[UICollectionViewLayoutAttributes]] = [[]]
+    private var headerCached: [UICollectionViewLayoutAttributes] = []
     weak var delegate: LeftAlignCollectionViewLayoutDelegate?
     
     override var collectionViewContentSize: CGSize {
@@ -58,11 +59,21 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         
         guard let collectionView = self.collectionView else { return }
         self.cached = [[]]
+        self.headerCached = []
         
         var currentXOffset: CGFloat = .zero
         var yOffset: CGFloat = .zero
         
         (0..<collectionView.numberOfSections).forEach { section in
+            guard let headerSize = self.delegate?.collectionView(collectionView, layout: self, referenceSizeForHeaderInSection: section) else { return }
+            let layoutAttributes = self.setupLayoutAttributes(
+                x: .zero,
+                y: yOffset,
+                width: headerSize.width,
+                height: headerSize.height
+            )
+            yOffset += headerSize
+            
             (0..<collectionView.numberOfItems(inSection: section)).forEach { item in
                 let indexPath = IndexPath(item: item, section: section)
                 guard let itemSize = self.delegate?.collectionView(collectionView, layout: self, sizeForItemAt: indexPath),
@@ -76,7 +87,6 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
                     currentXOffset = .zero
                 }
                 let layoutAttributes = self.setupLayoutAttributes(
-                    at: indexPath,
                     x: currentXOffset,
                     y: yOffset,
                     width: itemSize.width,
@@ -95,6 +105,10 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
                 if item.frame.intersects(rect) { intersectsAttributes.append(item) }
             }
         }
+        
+        self.headerCached.forEach { header in
+            if header.frame.intersects(rect) { intersectsAttributes.append(header) }
+        }
         return intersectsAttributes
     }
     
@@ -102,14 +116,20 @@ final class LeftAlignCollectionViewLayout: UICollectionViewLayout {
         return self.cached[safe: indexPath.section]?[safe: indexPath.item]
     }
     
+    override func layoutAttributesForSupplementaryView(
+        ofKind elementKind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionViewLayoutAttributes? {
+        self.headerCached[safe: indexPath.section]
+    }
+    
     private func setupLayoutAttributes(
-        at indexPath: IndexPath,
         x: CGFloat,
         y: CGFloat,
         width: CGFloat,
         height: CGFloat
     ) -> UICollectionViewLayoutAttributes {
-        let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        let layoutAttributes = UICollectionViewLayoutAttributes()
         layoutAttributes.frame = CGRect(
             x: x,
             y: y,
