@@ -8,13 +8,18 @@
 import RIBs
 
 protocol CardBooksDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
 }
 
 final class CardBooksComponent: Component<CardBooksDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    var cardBookRepository: CardBookRepository
+    
+    init(
+        dependency: CardBooksDependency,
+        cardBookRepository: CardBookRepository = YourNameCardBookRepository()
+    ) {
+        self.cardBookRepository = cardBookRepository
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
@@ -31,8 +36,11 @@ final class CardBooksBuilder: Builder<CardBooksDependency>, CardBooksBuildable {
 
     func build(withListener listener: CardBooksListener) -> CardBooksRouting {
         let component = CardBooksComponent(dependency: dependency)
-        let viewController = CardBooksViewController()
-        let interactor = CardBooksInteractor(presenter: viewController)
+        let viewController = CardBooksViewController.instantiate()
+        let interactor = CardBooksInteractor(
+            presenter: viewController,
+            cardBookRepository: component.cardBookRepository
+        )
         interactor.listener = listener
         return CardBooksRouter(interactor: interactor, viewController: viewController)
     }

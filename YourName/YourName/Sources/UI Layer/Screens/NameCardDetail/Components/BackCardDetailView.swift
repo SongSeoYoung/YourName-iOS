@@ -47,11 +47,11 @@ final class BackCardDetailView: NibLoadableView {
             .disposed(by: self.disposeBag)
         
         self.tmisCollectionView?.registerWithNib(CardDetailTMICollectionViewCell.self)
-        self.tmisCollectionView?.delegate = self
+        let leftAlignLayout = LeftAlignCollectionViewLayout()
+        self.tmisCollectionView?.collectionViewLayout = leftAlignLayout
+        leftAlignLayout.delegate = self
+//        self.tmisCollectionView?.delegate = self
         self.tmisCollectionView?.dataSource = self
-        if let collectionViewLayout = self.tmisCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
         
         self.tmisCollectionView?.rx.contentSize
             .subscribe(onNext: { [weak self] contentSize in
@@ -75,11 +75,17 @@ final class BackCardDetailView: NibLoadableView {
 }
 extension BackCardDetailView: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return self.contacts.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(CardDetailContactTableViewCell.self, for: indexPath),
               let contact = contacts[safe: indexPath.row] else { return UITableViewCell() }
         
@@ -90,11 +96,17 @@ extension BackCardDetailView: UITableViewDataSource {
 }
 extension BackCardDetailView: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return self.tmis.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(CardDetailTMICollectionViewCell.self, for: indexPath),
               let tmi = self.tmis[safe: indexPath.item] else { return UICollectionViewCell() }
         
@@ -103,18 +115,48 @@ extension BackCardDetailView: UICollectionViewDataSource {
     }
     
 }
-extension BackCardDetailView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+extension BackCardDetailView: UICollectionViewDelegate, LeftAlignCollectionViewLayoutDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
         return .zero
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return .zero
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        lineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 8
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        interitemSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 3
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        guard let tmi = self.tmis[safe: indexPath.item] else { return .zero }
+        print("size🔖", CardDetailTMICollectionViewCell.dynamicCellSize(tmi))
+        return CardDetailTMICollectionViewCell.dynamicCellSize(tmi)
     }
     
 }
