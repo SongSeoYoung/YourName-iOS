@@ -9,37 +9,69 @@ import RIBs
 import RxSwift
 
 protocol SettingRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func attachOnboardingQuest()
+    func attachNotice()
+    func attachProducer()
 }
 
 protocol SettingPresentable: Presentable {
     var listener: SettingPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
 }
 
 protocol SettingListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func detachAllChildren()
 }
 
-final class SettingInteractor: PresentableInteractor<SettingPresentable>, SettingInteractable, SettingPresentableListener {
-
+final class SettingInteractor: PresentableInteractor<SettingPresentable>,
+                               SettingInteractable {
+    
     weak var router: SettingRouting?
     weak var listener: SettingListener?
+    
+    private let disposeBag: DisposeBag
+    private let authenticationRepository: AuthenticationRepository
 
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
-    override init(presenter: SettingPresentable) {
+    init(presenter: SettingPresentable,
+         authenticationRepository: AuthenticationRepository) {
+        self.authenticationRepository = authenticationRepository
+        self.disposeBag = .init()
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        print(" 👶 \(String(describing: self)): \(#function)")
     }
 
     override func willResignActive() {
         super.willResignActive()
-        // TODO: Pause any business logic.
+        print(" ☠️ \(String(describing: self)): \(#function)")
+    }
+}
+
+extension SettingInteractor: SettingPresentableListener {
+    func didTapNotice() {
+        self.router?.attachNotice()
+    }
+    func didTapLogout() {
+        self.authenticationRepository.logout()
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .bind(onNext: { [weak self] in
+                self?.listener?.detachAllChildren()
+            })
+            .disposed(by: self.disposeBag)
+    }
+    func didTapWithdraw() {
+        // alert
+    }
+    func didTapOnboardingQuest() {
+        self.router?.attachOnboardingQuest()
+    }
+    func didtapProducer() {
+        self.router?.attachProducer()
     }
 }

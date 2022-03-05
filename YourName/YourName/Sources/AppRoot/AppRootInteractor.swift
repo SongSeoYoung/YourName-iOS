@@ -25,6 +25,10 @@ protocol AppRootPresentable: Presentable {
 protocol AppRootListener: AnyObject { }
 
 final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRootInteractable, AppRootPresentableListener {
+    func detachAllChildren() {
+        <#code#>
+    }
+    
     
     weak var router: AppRootRouting?
     weak var listener: AppRootListener?

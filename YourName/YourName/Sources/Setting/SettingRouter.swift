@@ -16,11 +16,24 @@ protocol SettingViewControllable: ViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
-final class SettingRouter: ViewableRouter<SettingInteractable, SettingViewControllable>, SettingRouting {
+final class SettingRouter: ViewableRouter<SettingInteractable, SettingViewControllable> {
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: SettingInteractable, viewController: SettingViewControllable) {
+    override init(interactor: SettingInteractable,
+                  viewController: SettingViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+}
+
+extension SettingRouter: SettingRouting {
+    func attachNotice() {
+        print(#function)
+    }
+    func attachProducer() {
+        print(#function)
+    }
+    func attachOnboardingQuest() {
+        print(#function)
     }
 }
