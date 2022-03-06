@@ -46,15 +46,15 @@ extension SettingViewController1 {
     }
     
     private func dispatch(to viewModel: SettingViewModel) {
-        self.rx.viewDidAppear
-            .flatMapFirst ({ [weak self] _ -> Observable<SettingNavigation> in
-                guard let self = self else { return .empty() }
-                return self.viewModel.navigation.asObservable()
-            })
-            .bind(onNext: { [weak self] action in
-                self?.navigate(action)
-            })
-            .disposed(by: self.disposeBag)
+//        self.rx.viewDidAppear
+//            .flatMapFirst ({ [weak self] _ -> Observable<SettingNavigation> in
+//                guard let self = self else { return .empty() }
+//                return self.viewModel.navigation.asObservable()
+//            })
+//            .bind(onNext: { [weak self] action in
+//                self?.navigate(action)
+//            })
+//            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: SettingViewModel) {
@@ -64,12 +64,12 @@ extension SettingViewController1 {
             .bind(to: self.isLoading)
             .disposed(by: self.disposeBag)
         
-        viewModel.backToFirst
-            .bind(onNext: {
-                let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
-            })
-            .disposed(by: self.disposeBag)
+//        viewModel.backToFirst
+//            .bind(onNext: {
+//                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
+//            })
+//            .disposed(by: self.disposeBag)
         
         viewModel.alert
             .bind(onNext: { [weak self] in

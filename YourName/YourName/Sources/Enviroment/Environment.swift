@@ -8,9 +8,5 @@
 import Foundation
 
 struct Environment {
-    var network: NetworkServing
-}
-
-extension Environment {
-    static var current = Environment(network: NetworkService())
+    let network: NetworkServing
 }

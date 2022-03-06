@@ -17,7 +17,7 @@ protocol CardRepository {
 
 final class YourNameCardRepository: CardRepository {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     
@@ -34,7 +34,7 @@ final class YourNameCardRepository: CardRepository {
     }
     
     func fetchCard(uniqueCode: UniqueCode) -> Observable<Entity.FriendCard> {
-        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
+        return self.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
     
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
@@ -47,22 +47,4 @@ final class YourNameCardRepository: CardRepository {
     
     private let network: NetworkServing
     
-}
-
-final class MockCardRepository: CardRepository {
-    
-    func fetchAll() -> Observable<[NameCard]> {
-        .just(NameCard.dummyList)
-    }
-    
-    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
-        .just(NameCard.dummyList)
-    }
-    
-    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
-        .just(Void())
-    }
-    func fetchCard(uniqueCode: UniqueCode) -> Observable<Entity.FriendCard> {
-        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
-    }
 }

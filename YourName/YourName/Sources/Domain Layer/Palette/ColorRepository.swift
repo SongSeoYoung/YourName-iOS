@@ -14,7 +14,7 @@ protocol ColorRepository {
 
 final class YourNameColorRepository: ColorRepository {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     

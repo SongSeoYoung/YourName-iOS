@@ -258,16 +258,16 @@ extension AddFriendCardViewController {
     }
     
     private func dispatch(to vieWModel: AddFriendCardViewModel) {
-        self.rx.viewDidAppear
-            .flatMapFirst ({ [weak self] _ -> Observable<AddFriendCardNavigation> in
-                guard let self = self else { return .empty() }
-                return self.viewModel.navigation.asObservable()
-            })
-            .bind(onNext: { [weak self] action in
-                guard let self = self else { return }
-                self.navigate(action)
-            })
-            .disposed(by: disposeBag)
+//        self.rx.viewDidAppear
+//            .flatMapFirst ({ [weak self] _ -> Observable<AddFriendCardNavigation> in
+//                guard let self = self else { return .empty() }
+//                return self.viewModel.navigation.asObservable()
+//            })
+//            .bind(onNext: { [weak self] action in
+//                guard let self = self else { return }
+//                self.navigate(action)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func navigate(_ navigation: AddFriendCardNavigation) {

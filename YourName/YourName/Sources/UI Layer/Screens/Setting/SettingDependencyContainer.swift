@@ -42,7 +42,7 @@ final class SettingDependencyContainer {
     
     private func createSettingViewModel() -> SettingViewModel {
         let repository = YourNameAuthenticationRepository(localStorage: UserDefaults.standard,
-                                         network: Environment.current.network)
+                                                          network: Environment(network: NetworkService()).network)
         return SettingViewModel(authRepository: repository)
     }
 }

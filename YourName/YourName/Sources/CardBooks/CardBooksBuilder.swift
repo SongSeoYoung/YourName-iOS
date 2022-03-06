@@ -15,7 +15,7 @@ final class CardBooksComponent: Component<CardBooksDependency> {
     
     init(
         dependency: CardBooksDependency,
-        cardBookRepository: CardBookRepository = YourNameCardBookRepository()
+        cardBookRepository: CardBookRepository = YourNameCardBookRepository(network: Environment(network: NetworkService()).network)
     ) {
         self.cardBookRepository = cardBookRepository
         super.init(dependency: dependency)

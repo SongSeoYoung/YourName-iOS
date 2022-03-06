@@ -72,12 +72,12 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
     }
     
     func logout() -> Observable<Void> {
-        return Environment.current.network.request(LogoutAPI())
+        return self.network.request(LogoutAPI())
                     .mapToVoid()
     }
     
     func resign() -> Observable<Void> {
-        return Environment.current.network.request(ResignAPI())
+        return self.network.request(ResignAPI())
                     .mapToVoid()
     }
     

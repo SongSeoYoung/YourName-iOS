@@ -15,13 +15,13 @@ final class SignedInDependencyContainer {
     
     init(
         accessToken: Secret,
-        refreshToken: Secret,
-        rootDependencyContainer: RootDependencyContainer
+        refreshToken: Secret
+//        rootDependencyContainer: RootDependencyContainer
     ) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         
-        Environment.current.network.setupAuthentication(accessToken: accessToken, refreshToken: refreshToken)
+//        Environment().network.setupAuthentication(accessToken: accessToken, refreshToken: refreshToken)
     }
     
     func createHomeViewController() -> HomeTabBarController {

@@ -35,8 +35,8 @@ final class MyCardListDependencyContainer {
     }
     
     private func createMyCardListViewModel() -> MyCardListViewModel {
-        let myCardRepository = YourNameMyCardRepository()
-        let questRepository = YourNameQuestRepository()
+        let myCardRepository = YourNameMyCardRepository(network: Environment(network: NetworkService()).network)
+        let questRepository = YourNameQuestRepository(network: Environment(network: NetworkService()).network)
         return MyCardListViewModel(myCardRepository: myCardRepository,
                                    questRepository: questRepository)
     }

@@ -40,7 +40,7 @@ final class PaletteDependencyContainer {
     }
     
     private func createProfileColorRepository() -> ColorRepository {
-        let repository = YourNameColorRepository()
+        let repository = YourNameColorRepository(network: Environment(network: NetworkService()).network)
 //        FakeColorRepository()
 //        repository.stubedProfileColors = [
 //            YourNameColor(id: 1, colorSource: .monotone(Palette.vilolet), status: .normal),

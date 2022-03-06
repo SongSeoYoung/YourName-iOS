@@ -6,14 +6,23 @@
 //
 
 import RIBs
+import UIKit
 
-final class AppRootComponent: Component<EmptyDependency>, SplashDependency, LoggedOutDependency, MyCardListDependency, CardBooksDependency, SettingDependency {
+final class AppRootComponent: Component<EmptyDependency>,
+                              SplashDependency,
+                              LoggedOutDependency,
+                              LoggedInDependency {
+    
     var localStorage: LocalStorage
+    var loggedInViewController: LoggedInViewControllable
     var network: NetworkServing
     
-    init() {
-        self.localStorage = UserDefaults.standard
-        self.network = Environment.current.network
+    init(network: NetworkServing,
+         rootViewController: LoggedInViewControllable,
+         localStorage: LocalStorage) {
+        self.network = network
+        self.loggedInViewController = rootViewController
+        self.localStorage = localStorage
         super.init(dependency: EmptyComponent())
     }
 }
@@ -21,7 +30,8 @@ final class AppRootComponent: Component<EmptyDependency>, SplashDependency, Logg
 // MARK: - Builder
 
 protocol AppRootBuildable: Buildable {
-    func build() -> LaunchRouting
+    func build(with network: NetworkServing,
+               localStorage: LocalStorage) -> LaunchRouting
 }
 
 final class AppRootBuilder: Builder<EmptyDependency>, AppRootBuildable {
@@ -30,26 +40,27 @@ final class AppRootBuilder: Builder<EmptyDependency>, AppRootBuildable {
         super.init(dependency: dependency)
     }
 
-    func build() -> LaunchRouting {
-        let component = AppRootComponent()
+    func build(with network: NetworkServing,
+               localStorage: LocalStorage) -> LaunchRouting {
         let viewController = AppRootViewController()
-        let interactor = AppRootInteractor(presenter: viewController)
+        let component = AppRootComponent(network: network,
+                                         rootViewController: viewController,
+                                         localStorage: localStorage)
+        
+        let interactor = AppRootInteractor(presenter: viewController,
+                                           network: component.network)
         
         // child buidler
         let spalshBuilder = SplashBuilder(dependency: component)
         let loggedOutBuilder = LoggedOutBuilder(dependency: component)
-        let myCardListBuilder = MyCardListBuilder(dependency: component)
-        let cardBooksBuilder = CardBooksBuilder(dependency: component)
-        let settingBuilder = SettingBuilder(dependency: component)
+        let loggedInBuilder = LoggedInBuilder(dependency: component)
         
         return AppRootRouter(
             interactor: interactor,
             viewController: viewController,
             splashBuilder: spalshBuilder,
             loggedOutBuilder: loggedOutBuilder,
-            myCardListBuilder: myCardListBuilder,
-            cardBooksBuilder: cardBooksBuilder,
-            settingBuilder: settingBuilder
+            loggedInBuilder: loggedInBuilder
         )
     }
 }

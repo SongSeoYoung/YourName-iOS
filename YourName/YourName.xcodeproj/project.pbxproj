@@ -97,6 +97,9 @@
 		A2CBF58C27BE85BC00D31CE4 /* CardMoreContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */; };
 		A2CBF58E27BE864100D31CE4 /* CardMoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */; };
 		A2CBF5DE27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF5DD27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift */; };
+		A2CBF66B27D4673000D31CE4 /* LoggedInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF66827D4673000D31CE4 /* LoggedInRouter.swift */; };
+		A2CBF66C27D4673000D31CE4 /* LoggedInBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF66927D4673000D31CE4 /* LoggedInBuilder.swift */; };
+		A2CBF66D27D4673000D31CE4 /* LoggedInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF66A27D4673000D31CE4 /* LoggedInInteractor.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
@@ -192,8 +195,6 @@
 		CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */; };
 		CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EE0270A100B00081A2B /* TMISettingView.xib */; };
 		CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EE2270A1AF800081A2B /* Optional+.swift */; };
-		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
-		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
 		CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */; };
 		CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */; };
@@ -204,7 +205,6 @@
 		CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */; };
 		CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A426F8CB2F00B2E69B /* SignedInDependencyContainer.swift */; };
 		CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */; };
-		CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */; };
 		CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */; };
 		CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */; };
 		CE6312B426F98DF000B2E69B /* MockAuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */; };
@@ -454,6 +454,9 @@
 		A2CBF58B27BE85BC00D31CE4 /* CardMoreContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardMoreContentView.xib; sourceTree = "<group>"; };
 		A2CBF58D27BE864100D31CE4 /* CardMoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoreContentView.swift; sourceTree = "<group>"; };
 		A2CBF5DD27C2464800D31CE4 /* LeftAlignCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewLayout.swift; sourceTree = "<group>"; };
+		A2CBF66827D4673000D31CE4 /* LoggedInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInRouter.swift; sourceTree = "<group>"; };
+		A2CBF66927D4673000D31CE4 /* LoggedInBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInBuilder.swift; sourceTree = "<group>"; };
+		A2CBF66A27D4673000D31CE4 /* LoggedInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInInteractor.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
@@ -549,8 +552,6 @@
 		CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewModel.swift; sourceTree = "<group>"; };
 		CE4D4EE0270A100B00081A2B /* TMISettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISettingView.xib; sourceTree = "<group>"; };
 		CE4D4EE2270A1AF800081A2B /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
-		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -561,7 +562,6 @@
 		CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDelegate.swift; sourceTree = "<group>"; };
 		CE6312A426F8CB2F00B2E69B /* SignedInDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedInDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedOutDependencyContainer.swift; sourceTree = "<group>"; };
-		CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationDelegate.swift; sourceTree = "<group>"; };
@@ -904,6 +904,16 @@
 			path = CardMore;
 			sourceTree = "<group>";
 		};
+		A2CBF66727D4671100D31CE4 /* LoggedInRIB */ = {
+			isa = PBXGroup;
+			children = (
+				A2CBF66827D4673000D31CE4 /* LoggedInRouter.swift */,
+				A2CBF66927D4673000D31CE4 /* LoggedInBuilder.swift */,
+				A2CBF66A27D4673000D31CE4 /* LoggedInInteractor.swift */,
+			);
+			path = LoggedInRIB;
+			sourceTree = "<group>";
+		};
 		A2CC657D2708E90400610C49 /* AddFriendCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1155,16 +1165,6 @@
 			path = Palette;
 			sourceTree = "<group>";
 		};
-		CE63123826F59C6B00B2E69B /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */,
-				CE63123926F59C7800B2E69B /* RootViewController.swift */,
-				CE63123F26F59E6700B2E69B /* RootViewModel.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
 		CE63124A26F5DD5D00B2E69B /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1374,7 @@
 		CEB6585B26EB296100C11F33 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A2CBF66727D4671100D31CE4 /* LoggedInRIB */,
 				A2CBF58027BE84E500D31CE4 /* CardMore */,
 				A2CBF55527BA89F900D31CE4 /* CardDetail */,
 				A2CBF52427B942D200D31CE4 /* Alert */,
@@ -1509,7 +1510,6 @@
 				CE2D1C5A275E88B900DCD2D3 /* NameCardDetail */,
 				CE4D4E992707BA9800081A2B /* Palette */,
 				CED16DEE26F3A5000076565F /* Quest */,
-				CE63123826F59C6B00B2E69B /* Root */,
 				A2BFC113273FF98C002FFF01 /* SelectCardBook */,
 				CED16DEF26F3A5050076565F /* Setting */,
 				CE4D4E902707B24A00081A2B /* SkillSetting */,
@@ -2040,7 +2040,6 @@
 				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
 				649ABC2E275108A9005F50E8 /* CardDetailViewModel.swift in Sources */,
 				A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */,
-				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CE6AF916275FDF5F00090BD9 /* ClipboardService.swift in Sources */,
 				64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */,
@@ -2059,6 +2058,7 @@
 				A2CBF4C627B7988A00D31CE4 /* AppRootRouter.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				A23921072737B9220069E418 /* ContactView.swift in Sources */,
+				A2CBF66B27D4673000D31CE4 /* LoggedInRouter.swift in Sources */,
 				A223E6D4275537DD00F29FCE /* RemoveMyNameCardAPI.swift in Sources */,
 				A2CBF50B27B7BB4A00D31CE4 /* LoggedOutInteractor.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
@@ -2078,6 +2078,7 @@
 				CE6AF918276290A700090BD9 /* UpdateCardAPI.swift in Sources */,
 				CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */,
 				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,
+				A2CBF66C27D4673000D31CE4 /* LoggedInBuilder.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE2D1C4E275890CE00DCD2D3 /* Identifier.swift in Sources */,
 				A2CBF4FC27B7B37B00D31CE4 /* SplashViewController.swift in Sources */,
@@ -2094,8 +2095,6 @@
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
 				CEDA4B90275126030011D0CA /* Entity.Empty.swift in Sources */,
 				CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */,
-				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
-				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
 				CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */,
 				A2CBF58927BE852600D31CE4 /* CardMoreBuilder.swift in Sources */,
@@ -2157,6 +2156,7 @@
 				CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */,
 				A23920F92736835F0069E418 /* AddFriendCardNoResultView.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardInfoInputViewModel.swift in Sources */,
+				A2CBF66D27D4673000D31CE4 /* LoggedInInteractor.swift in Sources */,
 				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
 				CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,

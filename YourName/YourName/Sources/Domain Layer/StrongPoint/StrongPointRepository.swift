@@ -15,7 +15,7 @@ protocol StrongPointRepository {
 
 final class YourNameStrongPointRepository: StrongPointRepository {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     

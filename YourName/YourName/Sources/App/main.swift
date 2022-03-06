@@ -7,8 +7,6 @@
 
 import UIKit
 
-setupEnviornment()
-
 UIApplicationMain(
     CommandLine.argc,
     UnsafeMutableRawPointer(CommandLine.unsafeArgv)
@@ -16,7 +14,3 @@ UIApplicationMain(
     NSStringFromClass(UIApplication.self),
     NSStringFromClass(AppDelegate.self)
 )
-
-private func setupEnviornment() {
-    Environment.current.network = NetworkService()
-}

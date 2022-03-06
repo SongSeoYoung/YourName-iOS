@@ -34,7 +34,7 @@ final class QuestDependencyContainer {
     }
     
     private func createQuestRepository() -> QuestRepository {
-        return YourNameQuestRepository()
+        return YourNameQuestRepository(network: Environment(network: NetworkService()).network)
     }
     
 }

@@ -14,7 +14,13 @@ protocol AddFriendCardRepository {
 
 final class YourNameAddFriendCardRepository: AddFriendCardRepository {
     
+    private let network: NetworkServing
+    
+    init(network: NetworkServing) {
+        self.network = network
+    }
+    
     func addFriendCard(uniqueCode: UniqueCode) -> Observable<Entity.Empty> {
-        return Environment.current.network.request(AddFriendCardAPI(uniqueCode: uniqueCode))
+        return network.request(AddFriendCardAPI(uniqueCode: uniqueCode))
     }
 }

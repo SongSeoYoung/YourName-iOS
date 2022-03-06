@@ -60,35 +60,35 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
         
         // TODO
-        self.rx.viewWillAppear
-            .flatMapFirst { [weak self] _ -> Observable<NameCardDetailViewModel.CardType?> in
-                guard let self = self else { return .empty() }
-                return self.viewModel.cardType.asObservable()
-            }
-            .compactMap { cardType -> UIImage? in
-                guard let cardType = cardType else { return nil }
-                switch cardType {
-                case .myCard:
-                    return UIImage(named: "btn_more")
-                case .friendCard:
-                    return UIImage(named: "ic_delete")
-                }
-            }
-            .bind(onNext: { [weak self] buttonImage in
-                self?.accessoryButton?.setImage(buttonImage, for: .normal)
-            })
-            .disposed(by: self.disposeBag)
-        
-        self.rx.viewDidAppear
-            .flatMapFirst { [weak self] _ -> Observable<NameCardDetailNavigation> in
-                guard let self = self else { return .empty() }
-                return self.viewModel.navigation.asObservable()
-            }
-            .bind(onNext: { [weak self] navigation in
-                guard let self = self else { return }
-                self.navigate(navigation)
-            })
-            .disposed(by: self.disposeBag)
+//        self.rx.viewWillAppear
+//            .flatMapFirst { [weak self] _ -> Observable<NameCardDetailViewModel.CardType?> in
+//                guard let self = self else { return .empty() }
+//                return self.viewModel.cardType.asObservable()
+//            }
+//            .compactMap { cardType -> UIImage? in
+//                guard let cardType = cardType else { return nil }
+//                switch cardType {
+//                case .myCard:
+//                    return UIImage(named: "btn_more")
+//                case .friendCard:
+//                    return UIImage(named: "ic_delete")
+//                }
+//            }
+//            .bind(onNext: { [weak self] buttonImage in
+//                self?.accessoryButton?.setImage(buttonImage, for: .normal)
+//            })
+//            .disposed(by: self.disposeBag)
+//
+//        self.rx.viewDidAppear
+//            .flatMapFirst { [weak self] _ -> Observable<NameCardDetailNavigation> in
+//                guard let self = self else { return .empty() }
+//                return self.viewModel.navigation.asObservable()
+//            }
+//            .bind(onNext: { [weak self] navigation in
+//                guard let self = self else { return }
+//                self.navigate(navigation)
+//            })
+//            .disposed(by: self.disposeBag)
         
         self.captureView
             .bind(onNext: { [weak self] in
