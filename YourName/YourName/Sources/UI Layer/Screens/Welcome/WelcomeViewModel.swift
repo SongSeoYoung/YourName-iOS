@@ -11,17 +11,14 @@ import RxRelay
 
 final class WelcomeViewModel {
     
-    private let delegate: AuthenticationDelegate
     private let authenticationRepository: AuthenticationRepository
     private let oauthRepository: OAuthRepository
     private let localStorage: LocalStorage
     private let disposeBag = DisposeBag()
     
-    init(delegate: AuthenticationDelegate,
-         authenticationRepository: AuthenticationRepository,
+    init(authenticationRepository: AuthenticationRepository,
          oauthRepository: OAuthRepository,
          localStorage: LocalStorage) {
-        self.delegate = delegate
         self.authenticationRepository = authenticationRepository
         self.oauthRepository = oauthRepository
         self.localStorage = localStorage
@@ -57,7 +54,7 @@ final class WelcomeViewModel {
                 self.localStorage.write(.refreshToken, value: authentication.refreshToken)
                     .subscribe(onNext: { _ in })
                     .disposed(by: self.disposeBag)
-                self.delegate.signIn(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
+//                self.delegate.signIn(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
             })
             .disposed(by: self.disposeBag)
     }

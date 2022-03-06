@@ -39,12 +39,12 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     private func dispatch(to viewModel: CardBookDetailViewModel) {
         self.viewModel.didLoad()
         
-        self.rx.viewDidAppear
-            .flatMapFirst { _ in self.viewModel.navigation }
-            .subscribe(onNext: { [weak self] action in
-                guard let self = self else { return }
-                self.navigate(action)
-            }).disposed(by: disposeBag)
+//        self.rx.viewDidAppear
+//            .flatMapFirst { _ in self.viewModel.navigation }
+//            .subscribe(onNext: { [weak self] action in
+//                guard let self = self else { return }
+//                self.navigate(action)
+//            }).disposed(by: disposeBag)
         
         self.backButton?.rx.tap
             .subscribe(onNext: { [weak self] in

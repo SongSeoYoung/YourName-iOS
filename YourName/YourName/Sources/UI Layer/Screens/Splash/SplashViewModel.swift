@@ -11,11 +11,9 @@ import RxSwift
 final class SplashViewModel {
     
     init(
-        authenticationRepository: AuthenticationRepository,
-        authenticationDelegate: AuthenticationDelegate
+        authenticationRepository: AuthenticationRepository
         ) {
         self.authenticationRepository = authenticationRepository
-        self.authenticationDelegate = authenticationDelegate
     }
     
     func loadAccessToken() {
@@ -23,16 +21,16 @@ final class SplashViewModel {
             .subscribe(onNext: { [weak self] authentication in
                 guard let self = self else { return }
                 if let accessToken = authentication?.accessToken, let refreshToken = authentication?.refreshToken {
-                    self.authenticationDelegate.signIn(accessToken: accessToken, refreshToken: refreshToken)
+//                    self.authenticationDelegate.signIn(accessToken: accessToken, refreshToken: refreshToken)
                 } else {
-                    self.authenticationDelegate.notSignIn()
+//                    self.authenticationDelegate.notSignIn()
                 }
             })
             .disposed(by: disposeBag)
     }
     
     private let authenticationRepository: AuthenticationRepository
-    private let authenticationDelegate: AuthenticationDelegate
+//    private let authenticationDelegate: AuthenticationDelegate
     
     private let disposeBag = DisposeBag()
 }

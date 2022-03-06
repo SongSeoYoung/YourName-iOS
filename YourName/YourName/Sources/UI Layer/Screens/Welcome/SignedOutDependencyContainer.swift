@@ -9,12 +9,12 @@ import Foundation
 
 final class SignedOutDependencyContainer {
     
-    let rootViewModel: RootViewModel
+//    let rootViewModel: RootViewModel
     let authenticationRepository: AuthenticationRepository
     
-    init(rootDependencyContainer: RootDependencyContainer) {
-        self.rootViewModel = rootDependencyContainer.rootViewModel
-        self.authenticationRepository = rootDependencyContainer.authenticationRepository
+    init() {
+//        self.rootViewModel = rootDependencyContainer.rootViewModel
+        self.authenticationRepository = YourNameAuthenticationRepository(localStorage: UserDefaults.standard, network: Environment(network: NetworkService()).network)
     }
     
     func createWelcomeViewController() -> WelcomeViewController {
@@ -25,8 +25,7 @@ final class SignedOutDependencyContainer {
     
     private func createWelcomeViewModel() -> WelcomeViewModel {
         let oauthRepository = YourNameOAuthRepository()
-        return WelcomeViewModel(delegate: rootViewModel,
-                                authenticationRepository: authenticationRepository,
+        return WelcomeViewModel(authenticationRepository: authenticationRepository,
                                 oauthRepository: oauthRepository,
                                 localStorage: UserDefaults.standard)
     }

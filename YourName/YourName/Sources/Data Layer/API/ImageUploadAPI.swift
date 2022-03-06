@@ -14,7 +14,7 @@ struct ImageUploadAPI: ServiceAPI {
     var path: String   { "/images" }
     var method: Method { .post }
     var headers: [String : String]? {
-        var headers = Environment.current.network.headers
+        var headers: [String: String] = [:]
         headers["accept"] = "application/json"
         headers["content-type"] = "multipart/form-data"
         return headers

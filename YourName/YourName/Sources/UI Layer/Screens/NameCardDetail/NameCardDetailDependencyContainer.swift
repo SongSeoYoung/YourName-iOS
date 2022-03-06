@@ -61,12 +61,12 @@ final class NameCardDetailDependencyContainer {
                                        cardRepository: cardRepository,
                                        myCardRepository: self.createMyCardRepository(),
                                        clipboardService: clipboardService,
-                                       questRepository: YourNameQuestRepository(),
+                                       questRepository: YourNameQuestRepository(network: Environment(network: NetworkService()).network),
                                        cardType: self.cardType)
     }
     
     private func createCardRepository() -> CardRepository {
-        return YourNameCardRepository()
+        return YourNameCardRepository(network: Environment(network: NetworkService()).network)
     }
     
     private func createClipboardService() -> ClipboardService {
@@ -74,6 +74,6 @@ final class NameCardDetailDependencyContainer {
     }
     
     private func createMyCardRepository() -> MyCardRepository {
-        return YourNameMyCardRepository()
+        return YourNameMyCardRepository(network: Environment(network: NetworkService()).network)
     }
 }

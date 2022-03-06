@@ -22,7 +22,7 @@ final class CardDetailComponent: Component<CardDetailDependency>, CardMoreDepend
     
     init(
         dependency: CardDetailDependency,
-        cardRepository: CardRepository = YourNameCardRepository(),
+        cardRepository: CardRepository = YourNameCardRepository(network: Environment(network: NetworkService()).network),
         clipboardService: ClipboardService = YourNameClipboardService()
     ) {
         self.cardRepository = cardRepository

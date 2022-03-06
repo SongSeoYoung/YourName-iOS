@@ -78,11 +78,11 @@ extension MyCardListViewControllerL {
     
     private func dispatch(to viewModel: MyCardListViewModel) {
       
-        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
-        .bind(onNext: { [weak self] action in
-            guard let self = self else { return }
-            self.navigate(action)
-        }).disposed(by: disposeBag)
+//        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
+//        .bind(onNext: { [weak self] action in
+//            guard let self = self else { return }
+//            self.navigate(action)
+//        }).disposed(by: disposeBag)
         
         self.addCardButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in

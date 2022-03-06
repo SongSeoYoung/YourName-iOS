@@ -22,7 +22,7 @@ final class MockCardBookRepository: CardBookRepository {
 
 final class YourNameCardBookRepository: CardBookRepository {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     

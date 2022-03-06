@@ -13,8 +13,8 @@ final class CardInfoInputDependencyContainer {
     
     init(myCardListDependencyContainer: MyCardListDependencyContainer) {
         func createCardInfoInputViewModel() -> CardInfoInputViewModel {
-            let myCardRepository = YourNameMyCardRepository()
-            let imageUploader = YourNameImageUploader()
+            let myCardRepository = YourNameMyCardRepository(network: Environment(network: NetworkService()).network)
+            let imageUploader = YourNameImageUploader(network: Environment(network: NetworkService()).network)
             return CardInfoInputViewModel(state: .new,
                                           cardRepository: nil,
                                           myCardRepository: myCardRepository,
@@ -26,10 +26,10 @@ final class CardInfoInputDependencyContainer {
     
     init(uniqueCode: UniqueCode) {
         func createCardInfoInputViewModel() -> CardInfoInputViewModel {
-            let repository = YourNameMyCardRepository()
-            let imageUploader = YourNameImageUploader()
+            let repository = YourNameMyCardRepository(network: Environment(network: NetworkService()).network)
+            let imageUploader = YourNameImageUploader(network: Environment(network: NetworkService()).network)
             return CardInfoInputViewModel(state: .edit(uniqueCode: uniqueCode),
-                                         cardRepository: YourNameCardRepository(),
+                                         cardRepository: YourNameCardRepository(network: Environment(network: NetworkService()).network),
                                          myCardRepository: repository,
                                          imageUploader: imageUploader)
         }

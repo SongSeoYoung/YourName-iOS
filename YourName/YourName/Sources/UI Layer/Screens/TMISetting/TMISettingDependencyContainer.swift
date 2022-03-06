@@ -18,12 +18,12 @@ final class TMISettingDependencyContainer {
     ) {
         
         func createInterestRepository() -> InterestRepository {
-            let interestRepository = YourNameInterestRepository()
+            let interestRepository = YourNameInterestRepository(network: Environment(network: NetworkService()).network)
             return interestRepository
         }
         
         func createStrongPointRepository() -> StrongPointRepository {
-            let strongPointRepository = YourNameStrongPointRepository()
+            let strongPointRepository = YourNameStrongPointRepository(network: Environment(network: NetworkService()).network)
             return strongPointRepository
         }
         

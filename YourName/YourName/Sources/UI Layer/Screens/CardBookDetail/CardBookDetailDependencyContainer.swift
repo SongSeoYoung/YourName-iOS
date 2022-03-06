@@ -33,7 +33,7 @@ final class CardBookDetailDependencyContainer {
     }
     
     private func createCardRepository() -> CardRepository {
-        return YourNameCardRepository()
+        return YourNameCardRepository(network: Environment(network: NetworkService()).network)
     }
     
     private func createCardDetailDependencyContainer(cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {

@@ -20,10 +20,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
-        self.launchRouter = AppRootBuilder(dependency: EmptyComponent()).build()
+        
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
+        self.launchRouter = AppRootBuilder(dependency: EmptyComponent()).build(with: NetworkService(),
+                                                                               localStorage: UserDefaults.standard)
         launchRouter?.launch(from: window)
         
         // setup

@@ -12,9 +12,9 @@ final class AddFriendCardDependencyContainer {
     private let addFriendCardRepository: AddFriendCardRepository
     private let cardRepository: CardRepository
     
-    init() {
-        self.addFriendCardRepository = YourNameAddFriendCardRepository()
-        self.cardRepository = YourNameCardRepository()
+    init(network: NetworkServing) {
+        self.addFriendCardRepository = YourNameAddFriendCardRepository(network: Environment(network: NetworkService()).network)
+        self.cardRepository = YourNameCardRepository(network: network)
     }
     
     deinit {
@@ -30,7 +30,7 @@ final class AddFriendCardDependencyContainer {
         }
         viewController.viewModel = AddFriendCardViewModel(addFriendCardRepository: self.addFriendCardRepository,
                                                           cardRepository: self.cardRepository,
-                                                          questRepository: YourNameQuestRepository())
+                                                          questRepository: YourNameQuestRepository(network: Environment(network: NetworkService()).network))
         viewController.cardDetailViewControllerFactory = cardDetailVieWControllerFactory
         
         return viewController

@@ -28,8 +28,11 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     
     weak var router: AppRootRouting?
     weak var listener: AppRootListener?
+    private let network: NetworkServing
     
-    override init(presenter: AppRootPresentable) {
+    init(presenter: AppRootPresentable,
+         network: NetworkServing) {
+        self.network = network
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -79,7 +82,7 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
 
 extension AppRootInteractor {
     func setupAuth(accessToken: Secret, refreshToken: Secret) {
-        Environment.current.network.setupAuthentication(
+        self.network.setupAuthentication(
             accessToken: accessToken,
             refreshToken: refreshToken
         )

@@ -31,7 +31,7 @@ final class CardBookListDependencyContainer {
     }
     
     private func createAddFriendCardDependencyContainer() -> AddFriendCardDependencyContainer {
-        return AddFriendCardDependencyContainer()
+        return AddFriendCardDependencyContainer(network: Environment(network: NetworkService()).network)
     }
     
     private func createCardBookListViewModel() -> CardBookListViewModel {
@@ -40,7 +40,7 @@ final class CardBookListDependencyContainer {
     }
     
     private func createCardBookRepository() -> CardBookRepository {
-        return YourNameCardBookRepository()
+        return YourNameCardBookRepository(network: Environment(network: NetworkService()).network)
     }
     
     private func createCardDetailDependencyContainer() -> CardBookDetailDependencyContainer {

@@ -18,7 +18,7 @@ protocol MyCardRepository {
 
 final class YourNameMyCardRepository: MyCardRepository {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     

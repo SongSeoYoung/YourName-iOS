@@ -52,8 +52,8 @@ final class MyCardListBuilder: Builder<MyCardListDependency>, MyCardListBuildabl
     }
 
     func build(withListener listener: MyCardListListener) -> MyCardListRouting {
-        let myCardRepository = YourNameMyCardRepository()
-        let questRepository = YourNameQuestRepository()
+        let myCardRepository = YourNameMyCardRepository(network: Environment(network: NetworkService()).network)
+        let questRepository = YourNameQuestRepository(network: Environment(network: NetworkService()).network)
         let alert = BehaviorRelay<AlertModel1?>(value: nil)
         let uniqueCode = BehaviorRelay<UniqueCode>(value: "")
         let cardId = BehaviorRelay<Identifier>(value: "")

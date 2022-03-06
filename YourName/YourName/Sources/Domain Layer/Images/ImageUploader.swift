@@ -16,7 +16,7 @@ protocol ImageUploader {
 
 final class YourNameImageUploader: ImageUploader {
     
-    init(network: NetworkServing = Environment.current.network) {
+    init(network: NetworkServing) {
         self.network = network
     }
     
